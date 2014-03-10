@@ -1,0 +1,643 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<bpel:process xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ode="http://www.apache.org/ode/type/extension" xmlns:notificacion="http://example.com/formulario/notificacion/xform/attachments" xmlns:Verificacion="http://example.com/formulario/Verificacion/xform/attachments" xmlns:ns="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice" xmlns:RecepcionaAtencion="http://example.com/formulario/RecepcionaAtencion/xform/attachments" xmlns:BASE="http://example.com/DiagramaProcesos/BASE" xmlns:Soporte="http://example.com/DiagramaProcesos/Soporte" xmlns:solicitud1="http://example.com/formulario/solicitud/xform" xmlns:Secretaria="http://example.com/DiagramaProcesos/Secretaria" xmlns:this="http://example.com/DiagramaProcesos/Server" xmlns:diag="http://example.com/DiagramaProcesos" xmlns:Solucion="urn:intalio.com:connectors:database:proyectosoporte:solucionservice" xmlns:solicitud="http://example.com/formulario/solicitud/xform/attachments" xmlns:RecepcionaAtencion1="http://example.com/formulario/RecepcionaAtencion/xform" xmlns:GeneraCodigo="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice" xmlns:RegistraTecnico="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice" xmlns:Verificacion1="http://example.com/formulario/Verificacion/xform" xmlns:notificacion1="http://example.com/formulario/notificacion/xform" xmlns:bpmn="http://www.intalio.com/bpms" xmlns:atomic="http://ode.apache.org/atomicScope" queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0" bpmn:label="Server" name="Server" bpmn:id="_U-eacKY9EeOEB6eNkkHbzA" targetNamespace="http://example.com/DiagramaProcesos/Server">
+  <bpel:import namespace="http://example.com/formulario/RecepcionaAtencion/xform" location="formulario/RecepcionaAtencion.xform.all.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+  <bpel:import namespace="http://example.com/formulario/Verificacion/xform" location="formulario/Verificacion.xform.all.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+  <bpel:import namespace="http://example.com/formulario/notificacion/xform" location="formulario/notificacion.xform.all.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+  <bpel:import namespace="http://example.com/formulario/solicitud/xform" location="formulario/solicitud.xform.all.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+  <bpel:import namespace="http://example.com/DiagramaProcesos" location="DiagramaProcesos.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+  <bpel:import namespace="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice" location="transacciones/GeneraCodigo.sql/GeneraCodigo.sql.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+  <bpel:import namespace="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice" location="transacciones/InsertarSolicitud.sql/InsertarSolicitud.sql.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+  <bpel:import namespace="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice" location="transacciones/RegistraTecnico.sql/RegistraTecnico.sql.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+  <bpel:import namespace="urn:intalio.com:connectors:database:proyectosoporte:solucionservice" location="transacciones/Solucion.sql/Solucion.sql.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+  <bpel:partnerLinks>
+    <bpel:partnerLink name="secretariaAndServerForPortTypeProcessPlkVar" partnerLinkType="diag:SecretariaAndServerForPortTypeProcessPlk" initializePartnerRole="yes" myRole="Server_for_Secretaria" partnerRole="Secretaria_for_Server"></bpel:partnerLink>
+    <bpel:partnerLink name="serverAndBASEForGeneraCodigoPortPlkVar" partnerLinkType="diag:ServerAndBASEForGeneraCodigoPortPlk" initializePartnerRole="yes" partnerRole="BASE_for_Server"></bpel:partnerLink>
+    <bpel:partnerLink name="serverAndBASEForInsertarSolicitudPortPlkVar" partnerLinkType="diag:ServerAndBASEForInsertarSolicitudPortPlk" initializePartnerRole="yes" partnerRole="BASE_for_Server"></bpel:partnerLink>
+    <bpel:partnerLink name="wFmagic_p4e78KZNEeOEB6eNkkHbzAPlkVar" partnerLinkType="diag:WFmagic_p4e78KZNEeOEB6eNkkHbzA" initializePartnerRole="no" myRole="Server_for_SoporteForThePortTypeProcess" partnerRole="Soporte_for_ServerForXformPort"></bpel:partnerLink>
+    <bpel:partnerLink name="serverAndBASEForRegistraTecnicoPortPlkVar" partnerLinkType="diag:ServerAndBASEForRegistraTecnicoPortPlk" initializePartnerRole="yes" partnerRole="BASE_for_Server"></bpel:partnerLink>
+    <bpel:partnerLink name="wFmagic_rrktYKZREeOEB6eNkkHbzAPlkVar" partnerLinkType="diag:WFmagic_rrktYKZREeOEB6eNkkHbzA" initializePartnerRole="no" myRole="Server_for_SoporteForThePortTypeProcess" partnerRole="Soporte_for_ServerForXformPort"></bpel:partnerLink>
+    <bpel:partnerLink name="serverAndBASEForSolucionPortPlkVar" partnerLinkType="diag:ServerAndBASEForSolucionPortPlk" initializePartnerRole="yes" partnerRole="BASE_for_Server"></bpel:partnerLink>
+  </bpel:partnerLinks>
+  <bpel:variables>
+    <bpel:variable name="solicitud1InitProcessRequestMsg" messageType="solicitud1:initProcessRequest"></bpel:variable>
+    <bpel:variable name="solicitud1InitProcessResponseMsg" messageType="solicitud1:initProcessResponse"></bpel:variable>
+    <bpel:variable name="generaCodigoGeneraCodigoRequestMsg" messageType="GeneraCodigo:GeneraCodigoInput"></bpel:variable>
+    <bpel:variable name="generaCodigoGeneraCodigoResponseMsg" messageType="GeneraCodigo:GeneraCodigoOutput"></bpel:variable>
+    <bpel:variable name="nsInsertarSolicitudRequestMsg" messageType="ns:InsertarSolicitudInput"></bpel:variable>
+    <bpel:variable name="nsInsertarSolicitudResponseMsg" messageType="ns:InsertarSolicitudOutput"></bpel:variable>
+    <bpel:variable name="recepcionaAtencion1CreateTaskRequestMsg" messageType="RecepcionaAtencion1:createTaskRequest"></bpel:variable>
+    <bpel:variable name="recepcionaAtencion1CreateTaskResponseMsg" messageType="RecepcionaAtencion1:createTaskResponse"></bpel:variable>
+    <bpel:variable name="recepcionaAtencion1NotifyTaskCompletionRequestMsg" messageType="RecepcionaAtencion1:notifyTaskCompletionRequest"></bpel:variable>
+    <bpel:variable name="recepcionaAtencion1NotifyTaskCompletionResponseMsg" messageType="RecepcionaAtencion1:notifyTaskCompletionResponse"></bpel:variable>
+    <bpel:variable name="registraTecnicoRegistraTecnicoRequestMsg" messageType="RegistraTecnico:RegistraTecnicoInput"></bpel:variable>
+    <bpel:variable name="registraTecnicoRegistraTecnicoResponseMsg" messageType="RegistraTecnico:RegistraTecnicoOutput"></bpel:variable>
+    <bpel:variable name="verificacion1CreateTaskRequestMsg" messageType="Verificacion1:createTaskRequest"></bpel:variable>
+    <bpel:variable name="verificacion1CreateTaskResponseMsg" messageType="Verificacion1:createTaskResponse"></bpel:variable>
+    <bpel:variable name="verificacion1NotifyTaskCompletionRequestMsg" messageType="Verificacion1:notifyTaskCompletionRequest"></bpel:variable>
+    <bpel:variable name="verificacion1NotifyTaskCompletionResponseMsg" messageType="Verificacion1:notifyTaskCompletionResponse"></bpel:variable>
+    <bpel:variable name="solucionSolucionRequestMsg" messageType="Solucion:SolucionInput"></bpel:variable>
+    <bpel:variable name="solucionSolucionResponseMsg" messageType="Solucion:SolucionOutput"></bpel:variable>
+    <bpel:variable name="notificacion1NotifyRequestMsg" messageType="notificacion1:notifyRequest"></bpel:variable>
+    <bpel:variable name="notificacion1NotifyResponseMsg" messageType="notificacion1:notifyResponse"></bpel:variable>
+  </bpel:variables>
+  <bpel:sequence>
+    <bpel:receive partnerLink="secretariaAndServerForPortTypeProcessPlkVar" portType="solicitud1:Process" operation="initProcess" variable="solicitud1InitProcessRequestMsg" createInstance="yes" bpmn:label="Task" name="Task" bpmn:id="_YEX0YKY9EeOEB6eNkkHbzA"></bpel:receive>
+    <bpel:assign name="init-variables-Server" bpmn:id="_YEX0YKY9EeOEB6eNkkHbzA">
+      <bpel:copy bpmn:label="$solicitud1InitProcessResponseMsg">
+        <bpel:from>
+          <bpel:literal>
+<solicitud1:initProcessResponse>
+  <solicitud1:status>OK</solicitud1:status>
+  <solicitud1:errorCode></solicitud1:errorCode>
+  <solicitud1:errorReason></solicitud1:errorReason>
+  <solicitud1:taskMetaData>
+    <solicitud1:nextTaskId></solicitud1:nextTaskId>
+    <solicitud1:nextTaskURL></solicitud1:nextTaskURL>
+    <solicitud1:instanceId></solicitud1:instanceId>
+  </solicitud1:taskMetaData>
+</solicitud1:initProcessResponse></bpel:literal>
+        </bpel:from>
+        <bpel:to>$solicitud1InitProcessResponseMsg.root</bpel:to>
+      </bpel:copy>
+      <bpel:copy bpmn:label="$generaCodigoGeneraCodigoRequestMsg">
+        <bpel:from>
+          <bpel:literal>
+<GeneraCodigo:GeneraCodigoParameterSet>
+  <GeneraCodigo:connection>
+    <GeneraCodigo:user></GeneraCodigo:user>
+    <GeneraCodigo:password></GeneraCodigo:password>
+  </GeneraCodigo:connection>
+  <GeneraCodigo:execute></GeneraCodigo:execute>
+</GeneraCodigo:GeneraCodigoParameterSet></bpel:literal>
+        </bpel:from>
+        <bpel:to>$generaCodigoGeneraCodigoRequestMsg.parameters</bpel:to>
+      </bpel:copy>
+      <bpel:copy bpmn:label="$nsInsertarSolicitudRequestMsg">
+        <bpel:from>
+          <bpel:literal>
+<ns:InsertarSolicitudParameterSet>
+  <ns:connection>
+    <ns:user></ns:user>
+    <ns:password></ns:password>
+  </ns:connection>
+  <ns:execute>
+    <ns:parameters>
+      <ns:Parameter0></ns:Parameter0>
+      <ns:Parameter1></ns:Parameter1>
+      <ns:Parameter2></ns:Parameter2>
+      <ns:Parameter3></ns:Parameter3>
+      <ns:Parameter4></ns:Parameter4>
+    </ns:parameters>
+  </ns:execute>
+</ns:InsertarSolicitudParameterSet></bpel:literal>
+        </bpel:from>
+        <bpel:to>$nsInsertarSolicitudRequestMsg.parameters</bpel:to>
+      </bpel:copy>
+      <bpel:copy bpmn:label="$recepcionaAtencion1CreateTaskRequestMsg">
+        <bpel:from>
+          <bpel:literal>
+<RecepcionaAtencion1:createTaskRequest>
+  <RecepcionaAtencion1:taskMetaData>
+    <RecepcionaAtencion1:taskId>_p4e78KZNEeOEB6eNkkHbzA</RecepcionaAtencion1:taskId>
+    <RecepcionaAtencion1:taskState></RecepcionaAtencion1:taskState>
+    <RecepcionaAtencion1:taskType></RecepcionaAtencion1:taskType>
+    <RecepcionaAtencion1:description/>
+    <RecepcionaAtencion1:processId></RecepcionaAtencion1:processId>
+    <RecepcionaAtencion1:instanceId></RecepcionaAtencion1:instanceId>
+    <RecepcionaAtencion1:business>
+      <RecepcionaAtencion1:processName></RecepcionaAtencion1:processName>
+      <RecepcionaAtencion1:instanceId></RecepcionaAtencion1:instanceId>
+      <RecepcionaAtencion1:stepName></RecepcionaAtencion1:stepName>
+      <RecepcionaAtencion1:customData></RecepcionaAtencion1:customData>
+    </RecepcionaAtencion1:business>
+    <RecepcionaAtencion1:creationDate></RecepcionaAtencion1:creationDate>
+    <RecepcionaAtencion1:userOwner>examples\pedro</RecepcionaAtencion1:userOwner>
+    <RecepcionaAtencion1:roleOwner/>
+    <RecepcionaAtencion1:claimAction>
+      <RecepcionaAtencion1:user></RecepcionaAtencion1:user>
+      <RecepcionaAtencion1:role></RecepcionaAtencion1:role>
+    </RecepcionaAtencion1:claimAction>
+    <RecepcionaAtencion1:revokeAction>
+      <RecepcionaAtencion1:user></RecepcionaAtencion1:user>
+      <RecepcionaAtencion1:role></RecepcionaAtencion1:role>
+    </RecepcionaAtencion1:revokeAction>
+    <RecepcionaAtencion1:saveAction>
+      <RecepcionaAtencion1:user></RecepcionaAtencion1:user>
+      <RecepcionaAtencion1:role></RecepcionaAtencion1:role>
+    </RecepcionaAtencion1:saveAction>
+    <RecepcionaAtencion1:completeAction>
+      <RecepcionaAtencion1:user></RecepcionaAtencion1:user>
+      <RecepcionaAtencion1:role></RecepcionaAtencion1:role>
+    </RecepcionaAtencion1:completeAction>
+    <RecepcionaAtencion1:formUrl>oxf://ProyectoSoporte/formulario/RecepcionaAtencion.xform</RecepcionaAtencion1:formUrl>
+    <RecepcionaAtencion1:failureCode></RecepcionaAtencion1:failureCode>
+    <RecepcionaAtencion1:failureReason></RecepcionaAtencion1:failureReason>
+    <RecepcionaAtencion1:priority></RecepcionaAtencion1:priority>
+    <RecepcionaAtencion1:scheduledActions>
+      <RecepcionaAtencion1:expiration>
+        <RecepcionaAtencion1:until></RecepcionaAtencion1:until>
+        <RecepcionaAtencion1:for></RecepcionaAtencion1:for>
+      </RecepcionaAtencion1:expiration>
+      <RecepcionaAtencion1:deferActivation>
+        <RecepcionaAtencion1:until></RecepcionaAtencion1:until>
+        <RecepcionaAtencion1:for></RecepcionaAtencion1:for>
+      </RecepcionaAtencion1:deferActivation>
+    </RecepcionaAtencion1:scheduledActions>
+    <RecepcionaAtencion1:attachments>
+      <attachment>
+        <attachmentMetadata>
+          <mimeType></mimeType>
+          <fileName></fileName>
+          <title></title>
+          <description/>
+          <creationDate></creationDate>
+        </attachmentMetadata>
+        <payloadUrl></payloadUrl>
+      </attachment>
+    </RecepcionaAtencion1:attachments>
+    <RecepcionaAtencion1:userProcessCompleteSOAPAction>http://example.com/formulario/RecepcionaAtencion/xform/Process/notifyTaskCompletion</RecepcionaAtencion1:userProcessCompleteSOAPAction>
+    <RecepcionaAtencion1:isChainedBefore></RecepcionaAtencion1:isChainedBefore>
+    <RecepcionaAtencion1:previousTaskId></RecepcionaAtencion1:previousTaskId>
+    <RecepcionaAtencion1:userProcessEndpoint>http://localhost:8080/ode/processes/ProyectoSoporte/DiagramaProcesos/Server/Soporte/WFmagic_p4e78KZNEeOEB6eNkkHbzA</RecepcionaAtencion1:userProcessEndpoint>
+    <RecepcionaAtencion1:userProcessNamespaceURI>http://example.com/formulario/RecepcionaAtencion/xform</RecepcionaAtencion1:userProcessNamespaceURI>
+  </RecepcionaAtencion1:taskMetaData>
+  <RecepcionaAtencion1:participantToken></RecepcionaAtencion1:participantToken>
+  <RecepcionaAtencion1:taskInput>
+    <RecepcionaAtencion1:input>
+      <RecepcionaAtencion1:group49>
+        <RecepcionaAtencion1:TecResponsable></RecepcionaAtencion1:TecResponsable>
+        <RecepcionaAtencion1:Recepcion_de_Solicitud></RecepcionaAtencion1:Recepcion_de_Solicitud>
+        <RecepcionaAtencion1:Codigo_Indicencia></RecepcionaAtencion1:Codigo_Indicencia>
+        <RecepcionaAtencion1:Oficina></RecepcionaAtencion1:Oficina>
+        <RecepcionaAtencion1:Indicencia></RecepcionaAtencion1:Indicencia>
+      </RecepcionaAtencion1:group49>
+    </RecepcionaAtencion1:input>
+  </RecepcionaAtencion1:taskInput>
+</RecepcionaAtencion1:createTaskRequest></bpel:literal>
+        </bpel:from>
+        <bpel:to>$recepcionaAtencion1CreateTaskRequestMsg.root</bpel:to>
+      </bpel:copy>
+      <bpel:copy bpmn:label="$recepcionaAtencion1NotifyTaskCompletionResponseMsg">
+        <bpel:from>
+          <bpel:literal>
+<RecepcionaAtencion1:response>
+  <RecepcionaAtencion1:isChainedAfter></RecepcionaAtencion1:isChainedAfter>
+  <RecepcionaAtencion1:taskMetaData>
+    <RecepcionaAtencion1:taskId></RecepcionaAtencion1:taskId>
+    <RecepcionaAtencion1:taskState></RecepcionaAtencion1:taskState>
+    <RecepcionaAtencion1:taskType></RecepcionaAtencion1:taskType>
+    <RecepcionaAtencion1:description></RecepcionaAtencion1:description>
+    <RecepcionaAtencion1:processId></RecepcionaAtencion1:processId>
+    <RecepcionaAtencion1:instanceId></RecepcionaAtencion1:instanceId>
+    <RecepcionaAtencion1:business>
+      <RecepcionaAtencion1:processName></RecepcionaAtencion1:processName>
+      <RecepcionaAtencion1:instanceId></RecepcionaAtencion1:instanceId>
+      <RecepcionaAtencion1:stepName></RecepcionaAtencion1:stepName>
+      <RecepcionaAtencion1:customData></RecepcionaAtencion1:customData>
+    </RecepcionaAtencion1:business>
+    <RecepcionaAtencion1:creationDate></RecepcionaAtencion1:creationDate>
+    <RecepcionaAtencion1:userOwner></RecepcionaAtencion1:userOwner>
+    <RecepcionaAtencion1:roleOwner></RecepcionaAtencion1:roleOwner>
+    <RecepcionaAtencion1:claimAction>
+      <RecepcionaAtencion1:user></RecepcionaAtencion1:user>
+      <RecepcionaAtencion1:role></RecepcionaAtencion1:role>
+    </RecepcionaAtencion1:claimAction>
+    <RecepcionaAtencion1:revokeAction>
+      <RecepcionaAtencion1:user></RecepcionaAtencion1:user>
+      <RecepcionaAtencion1:role></RecepcionaAtencion1:role>
+    </RecepcionaAtencion1:revokeAction>
+    <RecepcionaAtencion1:saveAction>
+      <RecepcionaAtencion1:user></RecepcionaAtencion1:user>
+      <RecepcionaAtencion1:role></RecepcionaAtencion1:role>
+    </RecepcionaAtencion1:saveAction>
+    <RecepcionaAtencion1:completeAction>
+      <RecepcionaAtencion1:user></RecepcionaAtencion1:user>
+      <RecepcionaAtencion1:role></RecepcionaAtencion1:role>
+    </RecepcionaAtencion1:completeAction>
+    <RecepcionaAtencion1:formUrl></RecepcionaAtencion1:formUrl>
+    <RecepcionaAtencion1:failureCode></RecepcionaAtencion1:failureCode>
+    <RecepcionaAtencion1:failureReason></RecepcionaAtencion1:failureReason>
+    <RecepcionaAtencion1:priority></RecepcionaAtencion1:priority>
+    <RecepcionaAtencion1:scheduledActions>
+      <RecepcionaAtencion1:expiration>
+        <RecepcionaAtencion1:until></RecepcionaAtencion1:until>
+        <RecepcionaAtencion1:for></RecepcionaAtencion1:for>
+      </RecepcionaAtencion1:expiration>
+      <RecepcionaAtencion1:deferActivation>
+        <RecepcionaAtencion1:until></RecepcionaAtencion1:until>
+        <RecepcionaAtencion1:for></RecepcionaAtencion1:for>
+      </RecepcionaAtencion1:deferActivation>
+    </RecepcionaAtencion1:scheduledActions>
+    <RecepcionaAtencion1:attachments>
+      <attachment>
+        <attachmentMetadata>
+          <mimeType></mimeType>
+          <fileName></fileName>
+          <title></title>
+          <description></description>
+          <creationDate></creationDate>
+        </attachmentMetadata>
+        <payloadUrl></payloadUrl>
+      </attachment>
+    </RecepcionaAtencion1:attachments>
+    <RecepcionaAtencion1:userProcessCompleteSOAPAction></RecepcionaAtencion1:userProcessCompleteSOAPAction>
+    <RecepcionaAtencion1:isChainedBefore></RecepcionaAtencion1:isChainedBefore>
+    <RecepcionaAtencion1:previousTaskId></RecepcionaAtencion1:previousTaskId>
+    <RecepcionaAtencion1:userProcessEndpoint></RecepcionaAtencion1:userProcessEndpoint>
+    <RecepcionaAtencion1:userProcessNamespaceURI></RecepcionaAtencion1:userProcessNamespaceURI>
+  </RecepcionaAtencion1:taskMetaData>
+  <RecepcionaAtencion1:status>OK</RecepcionaAtencion1:status>
+  <RecepcionaAtencion1:errorCode></RecepcionaAtencion1:errorCode>
+  <RecepcionaAtencion1:errorReason></RecepcionaAtencion1:errorReason>
+</RecepcionaAtencion1:response></bpel:literal>
+        </bpel:from>
+        <bpel:to>$recepcionaAtencion1NotifyTaskCompletionResponseMsg.root</bpel:to>
+      </bpel:copy>
+      <bpel:copy bpmn:label="$registraTecnicoRegistraTecnicoRequestMsg">
+        <bpel:from>
+          <bpel:literal>
+<RegistraTecnico:RegistraTecnicoParameterSet>
+  <RegistraTecnico:connection>
+    <RegistraTecnico:user></RegistraTecnico:user>
+    <RegistraTecnico:password></RegistraTecnico:password>
+  </RegistraTecnico:connection>
+  <RegistraTecnico:execute>
+    <RegistraTecnico:parameters>
+      <RegistraTecnico:TecResponsable></RegistraTecnico:TecResponsable>
+      <RegistraTecnico:id></RegistraTecnico:id>
+    </RegistraTecnico:parameters>
+  </RegistraTecnico:execute>
+</RegistraTecnico:RegistraTecnicoParameterSet></bpel:literal>
+        </bpel:from>
+        <bpel:to>$registraTecnicoRegistraTecnicoRequestMsg.parameters</bpel:to>
+      </bpel:copy>
+      <bpel:copy bpmn:label="$verificacion1CreateTaskRequestMsg">
+        <bpel:from>
+          <bpel:literal>
+<Verificacion1:createTaskRequest>
+  <Verificacion1:taskMetaData>
+    <Verificacion1:taskId>_rrktYKZREeOEB6eNkkHbzA</Verificacion1:taskId>
+    <Verificacion1:taskState></Verificacion1:taskState>
+    <Verificacion1:taskType></Verificacion1:taskType>
+    <Verificacion1:description/>
+    <Verificacion1:processId></Verificacion1:processId>
+    <Verificacion1:instanceId></Verificacion1:instanceId>
+    <Verificacion1:business>
+      <Verificacion1:processName></Verificacion1:processName>
+      <Verificacion1:instanceId></Verificacion1:instanceId>
+      <Verificacion1:stepName></Verificacion1:stepName>
+      <Verificacion1:customData></Verificacion1:customData>
+    </Verificacion1:business>
+    <Verificacion1:creationDate></Verificacion1:creationDate>
+    <Verificacion1:userOwner>examples\pedro</Verificacion1:userOwner>
+    <Verificacion1:roleOwner/>
+    <Verificacion1:claimAction>
+      <Verificacion1:user></Verificacion1:user>
+      <Verificacion1:role></Verificacion1:role>
+    </Verificacion1:claimAction>
+    <Verificacion1:revokeAction>
+      <Verificacion1:user></Verificacion1:user>
+      <Verificacion1:role></Verificacion1:role>
+    </Verificacion1:revokeAction>
+    <Verificacion1:saveAction>
+      <Verificacion1:user></Verificacion1:user>
+      <Verificacion1:role></Verificacion1:role>
+    </Verificacion1:saveAction>
+    <Verificacion1:completeAction>
+      <Verificacion1:user></Verificacion1:user>
+      <Verificacion1:role></Verificacion1:role>
+    </Verificacion1:completeAction>
+    <Verificacion1:formUrl>oxf://ProyectoSoporte/formulario/Verificacion.xform</Verificacion1:formUrl>
+    <Verificacion1:failureCode></Verificacion1:failureCode>
+    <Verificacion1:failureReason></Verificacion1:failureReason>
+    <Verificacion1:priority></Verificacion1:priority>
+    <Verificacion1:scheduledActions>
+      <Verificacion1:expiration>
+        <Verificacion1:until></Verificacion1:until>
+        <Verificacion1:for></Verificacion1:for>
+      </Verificacion1:expiration>
+      <Verificacion1:deferActivation>
+        <Verificacion1:until></Verificacion1:until>
+        <Verificacion1:for></Verificacion1:for>
+      </Verificacion1:deferActivation>
+    </Verificacion1:scheduledActions>
+    <Verificacion1:attachments>
+      <attachment>
+        <attachmentMetadata>
+          <mimeType></mimeType>
+          <fileName></fileName>
+          <title></title>
+          <description/>
+          <creationDate></creationDate>
+        </attachmentMetadata>
+        <payloadUrl></payloadUrl>
+      </attachment>
+    </Verificacion1:attachments>
+    <Verificacion1:userProcessCompleteSOAPAction>http://example.com/formulario/Verificacion/xform/Process/notifyTaskCompletion</Verificacion1:userProcessCompleteSOAPAction>
+    <Verificacion1:isChainedBefore></Verificacion1:isChainedBefore>
+    <Verificacion1:previousTaskId></Verificacion1:previousTaskId>
+    <Verificacion1:userProcessEndpoint>http://localhost:8080/ode/processes/ProyectoSoporte/DiagramaProcesos/Server/Soporte/WFmagic_rrktYKZREeOEB6eNkkHbzA</Verificacion1:userProcessEndpoint>
+    <Verificacion1:userProcessNamespaceURI>http://example.com/formulario/Verificacion/xform</Verificacion1:userProcessNamespaceURI>
+  </Verificacion1:taskMetaData>
+  <Verificacion1:participantToken></Verificacion1:participantToken>
+  <Verificacion1:taskInput>
+    <Verificacion1:input>
+      <Verificacion1:solucion></Verificacion1:solucion>
+      <Verificacion1:Tec_Responsable></Verificacion1:Tec_Responsable>
+      <Verificacion1:Insidencia_></Verificacion1:Insidencia_>
+      <Verificacion1:Oficina></Verificacion1:Oficina>
+      <Verificacion1:Codigo_Insidencia_></Verificacion1:Codigo_Insidencia_>
+      <Verificacion1:Atenciones></Verificacion1:Atenciones>
+    </Verificacion1:input>
+  </Verificacion1:taskInput>
+</Verificacion1:createTaskRequest></bpel:literal>
+        </bpel:from>
+        <bpel:to>$verificacion1CreateTaskRequestMsg.root</bpel:to>
+      </bpel:copy>
+      <bpel:copy bpmn:label="$verificacion1NotifyTaskCompletionResponseMsg">
+        <bpel:from>
+          <bpel:literal>
+<Verificacion1:response>
+  <Verificacion1:isChainedAfter></Verificacion1:isChainedAfter>
+  <Verificacion1:taskMetaData>
+    <Verificacion1:taskId></Verificacion1:taskId>
+    <Verificacion1:taskState></Verificacion1:taskState>
+    <Verificacion1:taskType></Verificacion1:taskType>
+    <Verificacion1:description></Verificacion1:description>
+    <Verificacion1:processId></Verificacion1:processId>
+    <Verificacion1:instanceId></Verificacion1:instanceId>
+    <Verificacion1:business>
+      <Verificacion1:processName></Verificacion1:processName>
+      <Verificacion1:instanceId></Verificacion1:instanceId>
+      <Verificacion1:stepName></Verificacion1:stepName>
+      <Verificacion1:customData></Verificacion1:customData>
+    </Verificacion1:business>
+    <Verificacion1:creationDate></Verificacion1:creationDate>
+    <Verificacion1:userOwner></Verificacion1:userOwner>
+    <Verificacion1:roleOwner></Verificacion1:roleOwner>
+    <Verificacion1:claimAction>
+      <Verificacion1:user></Verificacion1:user>
+      <Verificacion1:role></Verificacion1:role>
+    </Verificacion1:claimAction>
+    <Verificacion1:revokeAction>
+      <Verificacion1:user></Verificacion1:user>
+      <Verificacion1:role></Verificacion1:role>
+    </Verificacion1:revokeAction>
+    <Verificacion1:saveAction>
+      <Verificacion1:user></Verificacion1:user>
+      <Verificacion1:role></Verificacion1:role>
+    </Verificacion1:saveAction>
+    <Verificacion1:completeAction>
+      <Verificacion1:user></Verificacion1:user>
+      <Verificacion1:role></Verificacion1:role>
+    </Verificacion1:completeAction>
+    <Verificacion1:formUrl></Verificacion1:formUrl>
+    <Verificacion1:failureCode></Verificacion1:failureCode>
+    <Verificacion1:failureReason></Verificacion1:failureReason>
+    <Verificacion1:priority></Verificacion1:priority>
+    <Verificacion1:scheduledActions>
+      <Verificacion1:expiration>
+        <Verificacion1:until></Verificacion1:until>
+        <Verificacion1:for></Verificacion1:for>
+      </Verificacion1:expiration>
+      <Verificacion1:deferActivation>
+        <Verificacion1:until></Verificacion1:until>
+        <Verificacion1:for></Verificacion1:for>
+      </Verificacion1:deferActivation>
+    </Verificacion1:scheduledActions>
+    <Verificacion1:attachments>
+      <attachment>
+        <attachmentMetadata>
+          <mimeType></mimeType>
+          <fileName></fileName>
+          <title></title>
+          <description></description>
+          <creationDate></creationDate>
+        </attachmentMetadata>
+        <payloadUrl></payloadUrl>
+      </attachment>
+    </Verificacion1:attachments>
+    <Verificacion1:userProcessCompleteSOAPAction></Verificacion1:userProcessCompleteSOAPAction>
+    <Verificacion1:isChainedBefore></Verificacion1:isChainedBefore>
+    <Verificacion1:previousTaskId></Verificacion1:previousTaskId>
+    <Verificacion1:userProcessEndpoint></Verificacion1:userProcessEndpoint>
+    <Verificacion1:userProcessNamespaceURI></Verificacion1:userProcessNamespaceURI>
+  </Verificacion1:taskMetaData>
+  <Verificacion1:status>OK</Verificacion1:status>
+  <Verificacion1:errorCode></Verificacion1:errorCode>
+  <Verificacion1:errorReason></Verificacion1:errorReason>
+</Verificacion1:response></bpel:literal>
+        </bpel:from>
+        <bpel:to>$verificacion1NotifyTaskCompletionResponseMsg.root</bpel:to>
+      </bpel:copy>
+      <bpel:copy bpmn:label="$solucionSolucionRequestMsg">
+        <bpel:from>
+          <bpel:literal>
+<Solucion:SolucionParameterSet>
+  <Solucion:connection>
+    <Solucion:user></Solucion:user>
+    <Solucion:password></Solucion:password>
+  </Solucion:connection>
+  <Solucion:execute>
+    <Solucion:parameters>
+      <Solucion:solucion></Solucion:solucion>
+      <Solucion:id></Solucion:id>
+    </Solucion:parameters>
+  </Solucion:execute>
+</Solucion:SolucionParameterSet></bpel:literal>
+        </bpel:from>
+        <bpel:to>$solucionSolucionRequestMsg.parameters</bpel:to>
+      </bpel:copy>
+      <bpel:copy bpmn:label="$notificacion1NotifyRequestMsg">
+        <bpel:from>
+          <bpel:literal>
+<notificacion1:notifyRequest>
+  <notificacion1:metadata>
+    <notificacion1:description/>
+    <notificacion1:creationDate></notificacion1:creationDate>
+    <notificacion1:processId></notificacion1:processId>
+    <notificacion1:instanceId></notificacion1:instanceId>
+    <notificacion1:userOwner>examples\maria</notificacion1:userOwner>
+    <notificacion1:roleOwner/>
+    <notificacion1:formUrl>oxf://ProyectoSoporte/formulario/notificacion.xform</notificacion1:formUrl>
+    <notificacion1:dismissAction>
+      <notificacion1:user></notificacion1:user>
+      <notificacion1:role></notificacion1:role>
+    </notificacion1:dismissAction>
+    <notificacion1:priority></notificacion1:priority>
+  </notificacion1:metadata>
+  <notificacion1:input>
+    <notificacion1:input>
+      <notificacion1:group20>
+        <notificacion1:Notificacion_de_Soporte></notificacion1:Notificacion_de_Soporte>
+        <notificacion1:Codigo_Insidencia></notificacion1:Codigo_Insidencia>
+        <notificacion1:Oficina></notificacion1:Oficina>
+        <notificacion1:Insidencia></notificacion1:Insidencia>
+        <notificacion1:Tec_Responsable></notificacion1:Tec_Responsable>
+        <notificacion1:solucion></notificacion1:solucion>
+      </notificacion1:group20>
+    </notificacion1:input>
+  </notificacion1:input>
+</notificacion1:notifyRequest></bpel:literal>
+        </bpel:from>
+        <bpel:to>$notificacion1NotifyRequestMsg.root</bpel:to>
+      </bpel:copy>
+    </bpel:assign>
+    <bpel:assign>
+    <bpel:copy>
+        <bpel:from>$ode:pid</bpel:from>
+        <bpel:to>$solicitud1InitProcessResponseMsg.root/solicitud1:taskMetaData/solicitud1:instanceId</bpel:to>
+    </bpel:copy>
+  </bpel:assign>
+  <bpel:reply partnerLink="secretariaAndServerForPortTypeProcessPlkVar" portType="solicitud1:Process" operation="initProcess" variable="solicitud1InitProcessResponseMsg" bpmn:label="Task" name="Task-1" bpmn:id="_YEX0YKY9EeOEB6eNkkHbzA"></bpel:reply>
+    <bpel:invoke partnerLink="serverAndBASEForGeneraCodigoPortPlkVar" portType="GeneraCodigo:GeneraCodigoPort" operation="GeneraCodigo" inputVariable="generaCodigoGeneraCodigoRequestMsg" outputVariable="generaCodigoGeneraCodigoResponseMsg" bpmn:label="Task" name="Task-2" bpmn:id="_T6mFIKZJEeOEB6eNkkHbzA"></bpel:invoke>
+    <bpel:assign bpmn:label="Task" name="Task-3" bpmn:id="_UiB4kKZJEeOEB6eNkkHbzA">
+      <bpel:copy>
+        <bpel:from>$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Fecha</bpel:from>
+        <bpel:to>$nsInsertarSolicitudRequestMsg.parameters/ns:execute/ns:parameters/ns:Parameter2</bpel:to>
+      </bpel:copy>
+      <bpel:copy>
+        <bpel:from>$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Usuario_que_solicita</bpel:from>
+        <bpel:to>$nsInsertarSolicitudRequestMsg.parameters/ns:execute/ns:parameters/ns:Parameter3</bpel:to>
+      </bpel:copy>
+      <bpel:copy>
+        <bpel:from>$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Indicencia</bpel:from>
+        <bpel:to>$nsInsertarSolicitudRequestMsg.parameters/ns:execute/ns:parameters/ns:Parameter4</bpel:to>
+      </bpel:copy>
+      <bpel:copy>
+        <bpel:from>$generaCodigoGeneraCodigoResponseMsg.parameters/GeneraCodigo:rows/GeneraCodigo:row/GeneraCodigo:codigo</bpel:from>
+        <bpel:to>$nsInsertarSolicitudRequestMsg.parameters/ns:execute/ns:parameters/ns:Parameter0</bpel:to>
+      </bpel:copy>
+      <bpel:copy>
+        <bpel:from>$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Oficina</bpel:from>
+        <bpel:to>$nsInsertarSolicitudRequestMsg.parameters/ns:execute/ns:parameters/ns:Parameter1</bpel:to>
+      </bpel:copy>
+    </bpel:assign>
+    <bpel:invoke partnerLink="serverAndBASEForInsertarSolicitudPortPlkVar" portType="ns:InsertarSolicitudPort" operation="InsertarSolicitud" inputVariable="nsInsertarSolicitudRequestMsg" outputVariable="nsInsertarSolicitudResponseMsg" bpmn:label="Task" name="Task-4" bpmn:id="_UiB4kKZJEeOEB6eNkkHbzA"></bpel:invoke>
+    <bpel:assign bpmn:label="Task" name="Task-5" bpmn:id="_8xnTMKZPEeOEB6eNkkHbzA">
+      <bpel:copy>
+        <bpel:from>$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Oficina</bpel:from>
+        <bpel:to>$recepcionaAtencion1CreateTaskRequestMsg.root/RecepcionaAtencion1:taskInput/RecepcionaAtencion1:input/RecepcionaAtencion1:group49/RecepcionaAtencion1:Oficina</bpel:to>
+      </bpel:copy>
+      <bpel:copy>
+        <bpel:from>$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Indicencia</bpel:from>
+        <bpel:to>$recepcionaAtencion1CreateTaskRequestMsg.root/RecepcionaAtencion1:taskInput/RecepcionaAtencion1:input/RecepcionaAtencion1:group49/RecepcionaAtencion1:Indicencia</bpel:to>
+      </bpel:copy>
+      <bpel:copy>
+        <bpel:from>$generaCodigoGeneraCodigoResponseMsg.parameters/GeneraCodigo:rows/GeneraCodigo:row/GeneraCodigo:codigo</bpel:from>
+        <bpel:to>$recepcionaAtencion1CreateTaskRequestMsg.root/RecepcionaAtencion1:taskInput/RecepcionaAtencion1:input/RecepcionaAtencion1:group49/RecepcionaAtencion1:Codigo_Indicencia</bpel:to>
+      </bpel:copy>
+    </bpel:assign>
+    <bpel:assign>
+    <bpel:copy>
+        <bpel:from>$ode:pid</bpel:from>
+        <bpel:to>$recepcionaAtencion1CreateTaskRequestMsg.root/RecepcionaAtencion1:taskMetaData/RecepcionaAtencion1:instanceId</bpel:to>
+    </bpel:copy>
+    <bpel:copy>
+        <bpel:from>"http://localhost:8080/ode/processes/ProyectoSoporte/DiagramaProcesos/Server/Soporte/WFmagic_p4e78KZNEeOEB6eNkkHbzA"</bpel:from>
+        <bpel:to>$recepcionaAtencion1CreateTaskRequestMsg.root/RecepcionaAtencion1:taskMetaData/RecepcionaAtencion1:userProcessEndpoint</bpel:to>
+    </bpel:copy>
+    <bpel:copy>
+        <bpel:from>"http://example.com/formulario/RecepcionaAtencion/xform/Process/notifyTaskCompletion"</bpel:from>
+        <bpel:to>$recepcionaAtencion1CreateTaskRequestMsg.root/RecepcionaAtencion1:taskMetaData/RecepcionaAtencion1:userProcessCompleteSOAPAction</bpel:to>
+    </bpel:copy>
+    <bpel:copy>
+        <bpel:from>"_p4gxIKZNEeOEB6eNkkHbzA"</bpel:from>
+        <bpel:to>$recepcionaAtencion1CreateTaskRequestMsg.root/RecepcionaAtencion1:taskMetaData/RecepcionaAtencion1:taskId</bpel:to>
+    </bpel:copy>
+  </bpel:assign>
+  <bpel:invoke partnerLink="wFmagic_p4e78KZNEeOEB6eNkkHbzAPlkVar" portType="RecepcionaAtencion1:Workflow" operation="createTask" inputVariable="recepcionaAtencion1CreateTaskRequestMsg" outputVariable="recepcionaAtencion1CreateTaskResponseMsg" bpmn:label="Task" name="Task-6" bpmn:id="_8xnTMKZPEeOEB6eNkkHbzA"></bpel:invoke>
+    <bpel:receive partnerLink="wFmagic_p4e78KZNEeOEB6eNkkHbzAPlkVar" portType="RecepcionaAtencion1:Process" operation="notifyTaskCompletion" variable="recepcionaAtencion1NotifyTaskCompletionRequestMsg" bpmn:label="Task" name="Task-7" bpmn:id="_9H0MsKZPEeOEB6eNkkHbzA"></bpel:receive>
+    <bpel:reply partnerLink="wFmagic_p4e78KZNEeOEB6eNkkHbzAPlkVar" portType="RecepcionaAtencion1:Process" operation="notifyTaskCompletion" variable="recepcionaAtencion1NotifyTaskCompletionResponseMsg" bpmn:label="Task" name="Task-8" bpmn:id="_9H0MsKZPEeOEB6eNkkHbzA"></bpel:reply>
+    <bpel:assign bpmn:label="Task" name="Task-9" bpmn:id="_9anM4KZPEeOEB6eNkkHbzA">
+      <bpel:copy>
+        <bpel:from>$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:TecResponsable</bpel:from>
+        <bpel:to>$registraTecnicoRegistraTecnicoRequestMsg.parameters/RegistraTecnico:execute/RegistraTecnico:parameters/RegistraTecnico:TecResponsable</bpel:to>
+      </bpel:copy>
+      <bpel:copy>
+        <bpel:from>$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:Codigo_Indicencia</bpel:from>
+        <bpel:to>$registraTecnicoRegistraTecnicoRequestMsg.parameters/RegistraTecnico:execute/RegistraTecnico:parameters/RegistraTecnico:id</bpel:to>
+      </bpel:copy>
+    </bpel:assign>
+    <bpel:invoke partnerLink="serverAndBASEForRegistraTecnicoPortPlkVar" portType="RegistraTecnico:RegistraTecnicoPort" operation="RegistraTecnico" inputVariable="registraTecnicoRegistraTecnicoRequestMsg" outputVariable="registraTecnicoRegistraTecnicoResponseMsg" bpmn:label="Task" name="Task-10" bpmn:id="_9anM4KZPEeOEB6eNkkHbzA"></bpel:invoke>
+    <bpel:assign bpmn:label="Task" name="Task-11" bpmn:id="_MDnBIKZREeOEB6eNkkHbzA">
+      <bpel:copy>
+        <bpel:from>$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:TecResponsable</bpel:from>
+        <bpel:to>$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskInput/Verificacion1:input/Verificacion1:Tec_Responsable</bpel:to>
+      </bpel:copy>
+      <bpel:copy>
+        <bpel:from>$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:Codigo_Indicencia</bpel:from>
+        <bpel:to>$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskInput/Verificacion1:input/Verificacion1:Codigo_Insidencia_</bpel:to>
+      </bpel:copy>
+      <bpel:copy>
+        <bpel:from>$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:Oficina</bpel:from>
+        <bpel:to>$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskInput/Verificacion1:input/Verificacion1:Oficina</bpel:to>
+      </bpel:copy>
+      <bpel:copy>
+        <bpel:from>$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:Indicencia</bpel:from>
+        <bpel:to>$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskInput/Verificacion1:input/Verificacion1:Insidencia_</bpel:to>
+      </bpel:copy>
+    </bpel:assign>
+    <bpel:assign>
+    <bpel:copy>
+        <bpel:from>$ode:pid</bpel:from>
+        <bpel:to>$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskMetaData/Verificacion1:instanceId</bpel:to>
+    </bpel:copy>
+    <bpel:copy>
+        <bpel:from>"http://localhost:8080/ode/processes/ProyectoSoporte/DiagramaProcesos/Server/Soporte/WFmagic_rrktYKZREeOEB6eNkkHbzA"</bpel:from>
+        <bpel:to>$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskMetaData/Verificacion1:userProcessEndpoint</bpel:to>
+    </bpel:copy>
+    <bpel:copy>
+        <bpel:from>"http://example.com/formulario/Verificacion/xform/Process/notifyTaskCompletion"</bpel:from>
+        <bpel:to>$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskMetaData/Verificacion1:userProcessCompleteSOAPAction</bpel:to>
+    </bpel:copy>
+    <bpel:copy>
+        <bpel:from>"_rrmikKZREeOEB6eNkkHbzA"</bpel:from>
+        <bpel:to>$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskMetaData/Verificacion1:taskId</bpel:to>
+    </bpel:copy>
+  </bpel:assign>
+  <bpel:invoke partnerLink="wFmagic_rrktYKZREeOEB6eNkkHbzAPlkVar" portType="Verificacion1:Workflow" operation="createTask" inputVariable="verificacion1CreateTaskRequestMsg" outputVariable="verificacion1CreateTaskResponseMsg" bpmn:label="Task" name="Task-12" bpmn:id="_MDnBIKZREeOEB6eNkkHbzA"></bpel:invoke>
+    <bpel:receive partnerLink="wFmagic_rrktYKZREeOEB6eNkkHbzAPlkVar" portType="Verificacion1:Process" operation="notifyTaskCompletion" variable="verificacion1NotifyTaskCompletionRequestMsg" bpmn:label="Task" name="Task-13" bpmn:id="_usPpEKZREeOEB6eNkkHbzA"></bpel:receive>
+    <bpel:reply partnerLink="wFmagic_rrktYKZREeOEB6eNkkHbzAPlkVar" portType="Verificacion1:Process" operation="notifyTaskCompletion" variable="verificacion1NotifyTaskCompletionResponseMsg" bpmn:label="Task" name="Task-14" bpmn:id="_usPpEKZREeOEB6eNkkHbzA"></bpel:reply>
+    <bpel:assign bpmn:label="Task" name="Task-15" bpmn:id="_yQ8n0KayEeOjWt5atXfUXQ">
+      <bpel:copy>
+        <bpel:from>$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:solucion</bpel:from>
+        <bpel:to>$solucionSolucionRequestMsg.parameters/Solucion:execute/Solucion:parameters/Solucion:solucion</bpel:to>
+      </bpel:copy>
+      <bpel:copy>
+        <bpel:from>$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:Codigo_Insidencia_</bpel:from>
+        <bpel:to>$solucionSolucionRequestMsg.parameters/Solucion:execute/Solucion:parameters/Solucion:id</bpel:to>
+      </bpel:copy>
+    </bpel:assign>
+    <bpel:invoke partnerLink="serverAndBASEForSolucionPortPlkVar" portType="Solucion:SolucionPort" operation="Solucion" inputVariable="solucionSolucionRequestMsg" outputVariable="solucionSolucionResponseMsg" bpmn:label="Task" name="Task-16" bpmn:id="_yQ8n0KayEeOjWt5atXfUXQ"></bpel:invoke>
+    <bpel:assign bpmn:label="Task" name="Task-17" bpmn:id="_vGeacKazEeOjWt5atXfUXQ">
+      <bpel:copy>
+        <bpel:from>$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:Codigo_Insidencia_</bpel:from>
+        <bpel:to>$notificacion1NotifyRequestMsg.root/notificacion1:input/notificacion1:input/notificacion1:group20/notificacion1:Codigo_Insidencia</bpel:to>
+      </bpel:copy>
+      <bpel:copy>
+        <bpel:from>$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:Oficina</bpel:from>
+        <bpel:to>$notificacion1NotifyRequestMsg.root/notificacion1:input/notificacion1:input/notificacion1:group20/notificacion1:Oficina</bpel:to>
+      </bpel:copy>
+      <bpel:copy>
+        <bpel:from>$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:Insidencia_</bpel:from>
+        <bpel:to>$notificacion1NotifyRequestMsg.root/notificacion1:input/notificacion1:input/notificacion1:group20/notificacion1:Insidencia</bpel:to>
+      </bpel:copy>
+      <bpel:copy>
+        <bpel:from>$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:Tec_Responsable</bpel:from>
+        <bpel:to>$notificacion1NotifyRequestMsg.root/notificacion1:input/notificacion1:input/notificacion1:group20/notificacion1:Tec_Responsable</bpel:to>
+      </bpel:copy>
+      <bpel:copy>
+        <bpel:from>$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:solucion</bpel:from>
+        <bpel:to>$notificacion1NotifyRequestMsg.root/notificacion1:input/notificacion1:input/notificacion1:group20/notificacion1:solucion</bpel:to>
+      </bpel:copy>
+    </bpel:assign>
+    <bpel:assign>
+    <bpel:copy>
+        <bpel:from>$ode:pid</bpel:from>
+        <bpel:to>$notificacion1NotifyRequestMsg.root/notificacion1:metadata/notificacion1:instanceId</bpel:to>
+    </bpel:copy>
+  </bpel:assign>
+  <bpel:invoke partnerLink="secretariaAndServerForPortTypeProcessPlkVar" portType="notificacion1:Workflow" operation="notify" inputVariable="notificacion1NotifyRequestMsg" outputVariable="notificacion1NotifyResponseMsg" bpmn:label="Task" name="Task-18" bpmn:id="_vGeacKazEeOjWt5atXfUXQ"></bpel:invoke>
+  </bpel:sequence>
+</bpel:process>

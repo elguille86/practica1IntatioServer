@@ -1,0 +1,43 @@
+﻿<wsdl:definitions targetNamespace="urn:intalio.com:connectors:database:proyectosoporte:selectsolicitudservice" xmlns:tns="urn:intalio.com:connectors:database:proyectosoporte:selectsolicitudservice" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns="urn:intalio.com:connectors:database:proyectosoporte:selectsolicitudservice">
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="selectsolicitud.xsd" namespace="urn:intalio.com:connectors:database:proyectosoporte:selectsolicitudservice"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="selectsolicitudInput">
+        <wsdl:part name="parameters" element="ns:selectsolicitudParameterSet"/>
+    </wsdl:message>
+    <wsdl:message name="selectsolicitudOutput">
+        <wsdl:part name="parameters" element="ns:selectsolicitudResultSet"/>
+    </wsdl:message>
+    <wsdl:message name="selectsolicitudFault">
+        <wsdl:part name="fault" element="ns:selectsolicitudFault"/>
+    </wsdl:message>
+    <wsdl:portType name="selectsolicitudPort">
+        <wsdl:operation name="selectsolicitud">
+            <wsdl:input message="tns:selectsolicitudInput"/>
+            <wsdl:output message="tns:selectsolicitudOutput"/>
+            <wsdl:fault message="tns:selectsolicitudFault" name="nsselectsolicitudFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="selectsolicitudPortSoapBinding" type="tns:selectsolicitudPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="selectsolicitud">
+            <soap:operation style="document" soapAction="urn:intalio:connector:jdbc:query:selectsolicitud"/>
+            <wsdl:input>
+                <soap:body namespace="urn:intalio.com:connectors:database:proyectosoporte:selectsolicitudservice" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body namespace="urn:intalio.com:connectors:database:proyectosoporte:selectsolicitudservice" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="nsselectsolicitudFault">
+                <soap:body namespace="urn:intalio.com:connectors:database:proyectosoporte:selectsolicitudservice" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="selectsolicitudService">
+        <wsdl:port binding="tns:selectsolicitudPortSoapBinding" name="selectsolicitudPort">
+            <soap:address location="http://localhost:8080/ode/processes/ProyectoSoporte/transacciones/selectsolicitud"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

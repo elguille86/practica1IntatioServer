@@ -1,0 +1,9 @@
+﻿#
+#Sat Mar 08 06:27:10 COT 2014
+formURI=oxf\://ProyectoSoporte/formulario/solicitud.xform
+userProcessInitSOAPAction=http\://example.com/formulario/solicitud/xform/Process/initProcess
+processEndpoint=http\://localhost\:8080/ode/processes/ProyectoSoporte/DiagramaProcesos/Server/Secretaria/SecretariaAndServerForPortTypeProcessPlk
+task-description=solicitud-init request process ProyectoSoporte/DiagramaProcesos with form formulario/solicitud.xform
+task-role-owners=
+task-user-owners=examples\\maria
+formNamespace=http\://example.com/formulario/solicitud/xform

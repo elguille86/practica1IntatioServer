@@ -1,0 +1,84 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:ns="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice" xmlns:GeneraCodigo="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice" xmlns:this="http://thisdiagram/BASE" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:RegistraTecnico="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice" xmlns:Server="http://thisdiagram/Server" xmlns:diag="http://thisdiagram" xmlns:Solucion="urn:intalio.com:connectors:database:proyectosoporte:solucionservice" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/BASE">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice" bpdm:prefix="ns" bpdm:comment="contrib=&apos;project:///transacciones/InsertarSolicitud.sql/InsertarSolicitud.sql.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice" bpdm:prefix="GeneraCodigo" bpdm:comment="contrib=&apos;project:///transacciones/GeneraCodigo.sql/GeneraCodigo.sql.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/BASE" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice" bpdm:prefix="RegistraTecnico" bpdm:comment="contrib=&apos;project:///transacciones/RegistraTecnico.sql/RegistraTecnico.sql.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Server" bpdm:prefix="Server" bpdm:comment="contrib=&apos;partner-pool:///_U-eacKY9EeOEB6eNkkHbzA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_U-eacKY9EeOEB6eNkkHbzA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:proyectosoporte:solucionservice" bpdm:prefix="Solucion" bpdm:comment="contrib=&apos;project:///transacciones/Solucion.sql/Solucion.sql.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/InsertarSolicitud.sql/InsertarSolicitud.sql.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/InsertarSolicitud.sql/InsertarSolicitud.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/GeneraCodigo.sql/GeneraCodigo.sql.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/GeneraCodigo.sql/GeneraCodigo.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_U-eacKY9EeOEB6eNkkHbzA" bpdm:label="Server"/>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/RegistraTecnico.sql/RegistraTecnico.sql.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/RegistraTecnico.sql/RegistraTecnico.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/Solucion.sql/Solucion.sql.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/Solucion.sql/Solucion.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:label="BASE" bpdm:ID="_AKRywKY9EeOEB6eNkkHbzA">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="serverAndBASEForGeneraCodigoPortPlkVar" partnerLinkType="diag:ServerAndBASEForGeneraCodigoPortPlk" myRole="BASE_for_Server" bpdm:enableSharing="false" bpdm:providedService="GeneraCodigo:GeneraCodigoService" bpdm:providedPort="GeneraCodigoPort" bpdm:provideSOAPAddress="http://localhost:8080/ode/processes/ProyectoSoporte/transacciones/GeneraCodigo" bpdm:providedIsDefault="true" bpdm:clientTasks="_AKRywKY9EeOEB6eNkkHbzA:_QgHiUKZJEeOEB6eNkkHbzA" bpdm:isManaged="true" bpdm:otherPoolId="_U-eacKY9EeOEB6eNkkHbzA"/>
+            <bpel:partnerLink name="serverAndBASEForInsertarSolicitudPortPlkVar" partnerLinkType="diag:ServerAndBASEForInsertarSolicitudPortPlk" myRole="BASE_for_Server" bpdm:enableSharing="false" bpdm:providedService="ns:InsertarSolicitudService" bpdm:providedPort="InsertarSolicitudPort" bpdm:provideSOAPAddress="http://localhost:8080/ode/processes/ProyectoSoporte/transacciones/InsertarSolicitud" bpdm:providedIsDefault="true" bpdm:clientTasks="_AKRywKY9EeOEB6eNkkHbzA:_6jLYoKZCEeOEB6eNkkHbzA" bpdm:isManaged="true" bpdm:otherPoolId="_U-eacKY9EeOEB6eNkkHbzA"/>
+            <bpel:partnerLink name="serverAndBASEForRegistraTecnicoPortPlkVar" partnerLinkType="diag:ServerAndBASEForRegistraTecnicoPortPlk" myRole="BASE_for_Server" bpdm:enableSharing="false" bpdm:providedService="RegistraTecnico:RegistraTecnicoService" bpdm:providedPort="RegistraTecnicoPort" bpdm:provideSOAPAddress="http://localhost:8080/ode/processes/ProyectoSoporte/transacciones/RegistraTecnico" bpdm:providedIsDefault="true" bpdm:clientTasks="_AKRywKY9EeOEB6eNkkHbzA:_BNX-wKZOEeOEB6eNkkHbzA" bpdm:isManaged="true" bpdm:otherPoolId="_U-eacKY9EeOEB6eNkkHbzA"/>
+            <bpel:partnerLink name="serverAndBASEForSolucionPortPlkVar" partnerLinkType="diag:ServerAndBASEForSolucionPortPlk" myRole="BASE_for_Server" bpdm:enableSharing="false" bpdm:providedService="Solucion:SolucionService" bpdm:providedPort="SolucionPort" bpdm:provideSOAPAddress="http://localhost:8080/ode/processes/ProyectoSoporte/transacciones/Solucion" bpdm:providedIsDefault="true" bpdm:clientTasks="_AKRywKY9EeOEB6eNkkHbzA:_xFceAKayEeOjWt5atXfUXQ" bpdm:isManaged="true" bpdm:otherPoolId="_U-eacKY9EeOEB6eNkkHbzA"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="generaCodigoGeneraCodigoRequestMsg" messageType="GeneraCodigo:GeneraCodigoInput" binding="GeneraCodigo:GeneraCodigoPortSoapBinding" operation="GeneraCodigo" opMsgType="0" bpdm:id="_j352YKZJEeOEB6eNkkHbzA" bpdm:messageIds="inc:_j3dKcKZJEeOEB6eNkkHbzA"/>
+            <bpel:variable name="generaCodigoGeneraCodigoResponseMsg" messageType="GeneraCodigo:GeneraCodigoOutput" binding="GeneraCodigo:GeneraCodigoPortSoapBinding" operation="GeneraCodigo" opMsgType="1" bpdm:id="_lS50wKZJEeOEB6eNkkHbzA" bpdm:messageIds=" out:_lSovAKZJEeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="parameters">
+                    <bpel:literal bpdm:linkedMessageType="GeneraCodigo:GeneraCodigoOutput" bpdm:linkedPart="parameters" bpdm:binding="GeneraCodigo:GeneraCodigoPortSoapBinding" bpdm:opMsgType="1" bpdm:operation="GeneraCodigo"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="nsInsertarSolicitudRequestMsg" messageType="ns:InsertarSolicitudInput" binding="ns:InsertarSolicitudPortSoapBinding" operation="InsertarSolicitud" opMsgType="0" bpdm:id="_lw_e9aZJEeOEB6eNkkHbzA" bpdm:messageIds="inc:_lwnrgKZJEeOEB6eNkkHbzA"/>
+            <bpel:variable name="nsInsertarSolicitudResponseMsg" messageType="ns:InsertarSolicitudOutput" binding="ns:InsertarSolicitudPortSoapBinding" operation="InsertarSolicitud" opMsgType="1" bpdm:id="_mDlDwKZJEeOEB6eNkkHbzA" bpdm:messageIds=" out:_mDTW8KZJEeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="parameters">
+                    <bpel:literal bpdm:linkedMessageType="ns:InsertarSolicitudOutput" bpdm:linkedPart="parameters" bpdm:binding="ns:InsertarSolicitudPortSoapBinding" bpdm:opMsgType="1" bpdm:operation="InsertarSolicitud"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="registraTecnicoRegistraTecnicoRequestMsg" messageType="RegistraTecnico:RegistraTecnicoInput" binding="RegistraTecnico:RegistraTecnicoPortSoapBinding" operation="RegistraTecnico" opMsgType="0" bpdm:id="_aBnChaZQEeOEB6eNkkHbzA" bpdm:messageIds="inc:_aBJIcKZQEeOEB6eNkkHbzA"/>
+            <bpel:variable name="registraTecnicoRegistraTecnicoResponseMsg" messageType="RegistraTecnico:RegistraTecnicoOutput" binding="RegistraTecnico:RegistraTecnicoPortSoapBinding" operation="RegistraTecnico" opMsgType="1" bpdm:id="_aa5FMKZQEeOEB6eNkkHbzA" bpdm:messageIds=" out:_aae1gKZQEeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="parameters">
+                    <bpel:literal bpdm:linkedMessageType="RegistraTecnico:RegistraTecnicoOutput" bpdm:linkedPart="parameters" bpdm:binding="RegistraTecnico:RegistraTecnicoPortSoapBinding" bpdm:opMsgType="1" bpdm:operation="RegistraTecnico"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="solucionSolucionRequestMsg" messageType="Solucion:SolucionInput" binding="Solucion:SolucionPortSoapBinding" operation="Solucion" opMsgType="0" bpdm:id="_zyM_NaayEeOjWt5atXfUXQ" bpdm:messageIds="inc:_zxP88KayEeOjWt5atXfUXQ"/>
+            <bpel:variable name="solucionSolucionResponseMsg" messageType="Solucion:SolucionOutput" binding="Solucion:SolucionPortSoapBinding" operation="Solucion" opMsgType="1" bpdm:id="_0OmAQKayEeOjWt5atXfUXQ" bpdm:messageIds=" out:_0OEb0KayEeOjWt5atXfUXQ">
+                <bpel:from bpdm:toPart="parameters">
+                    <bpel:literal bpdm:linkedMessageType="Solucion:SolucionOutput" bpdm:linkedPart="parameters" bpdm:binding="Solucion:SolucionPortSoapBinding" bpdm:opMsgType="1" bpdm:operation="Solucion"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:flow>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="InsertarSolicitud" partnerLink="serverAndBASEForInsertarSolicitudPortPlkVar" portType="ns:InsertarSolicitudPort" isMyRole="true" enableSharing="false" bpdm:label="Provide-Service-Insertarsolicitud" bpdm:ID="_6jLYoKZCEeOEB6eNkkHbzA">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="nsInsertarSolicitudRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="ns:InsertarSolicitudInput" bpdm:binding="ns:InsertarSolicitudPortSoapBinding" bpdm:ID="_lwnrgKZJEeOEB6eNkkHbzA"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="nsInsertarSolicitudResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="ns:InsertarSolicitudOutput" bpdm:binding="ns:InsertarSolicitudPortSoapBinding" bpdm:ID="_mDTW8KZJEeOEB6eNkkHbzA"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="Solucion" partnerLink="serverAndBASEForSolucionPortPlkVar" portType="Solucion:SolucionPort" isMyRole="true" enableSharing="false" bpdm:label="Provide-Service-Solucion" bpdm:ID="_xFceAKayEeOjWt5atXfUXQ">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="solucionSolucionRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="Solucion:SolucionInput" bpdm:binding="Solucion:SolucionPortSoapBinding" bpdm:ID="_zxP88KayEeOjWt5atXfUXQ"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="solucionSolucionResponseMsg" bpdm:msgVarScopeId="_AKRywKY9EeOEB6eNkkHbzA" bpdm:variableIsManaged="true" bpdm:messageType="Solucion:SolucionOutput" bpdm:binding="Solucion:SolucionPortSoapBinding" bpdm:ID="_0OEb0KayEeOjWt5atXfUXQ"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="RegistraTecnico" partnerLink="serverAndBASEForRegistraTecnicoPortPlkVar" portType="RegistraTecnico:RegistraTecnicoPort" isMyRole="true" enableSharing="false" bpdm:label="Provide-Service-Registratecnico" bpdm:ID="_BNX-wKZOEeOEB6eNkkHbzA">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="registraTecnicoRegistraTecnicoRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="RegistraTecnico:RegistraTecnicoInput" bpdm:binding="RegistraTecnico:RegistraTecnicoPortSoapBinding" bpdm:ID="_aBJIcKZQEeOEB6eNkkHbzA"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="registraTecnicoRegistraTecnicoResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="RegistraTecnico:RegistraTecnicoOutput" bpdm:binding="RegistraTecnico:RegistraTecnicoPortSoapBinding" bpdm:ID="_aae1gKZQEeOEB6eNkkHbzA"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="GeneraCodigo" partnerLink="serverAndBASEForGeneraCodigoPortPlkVar" portType="GeneraCodigo:GeneraCodigoPort" isMyRole="true" enableSharing="false" bpdm:label="Provide-Service-Generacodigo" bpdm:ID="_QgHiUKZJEeOEB6eNkkHbzA">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="generaCodigoGeneraCodigoRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="GeneraCodigo:GeneraCodigoInput" bpdm:binding="GeneraCodigo:GeneraCodigoPortSoapBinding" bpdm:ID="_j3dKcKZJEeOEB6eNkkHbzA"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="generaCodigoGeneraCodigoResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="GeneraCodigo:GeneraCodigoOutput" bpdm:binding="GeneraCodigo:GeneraCodigoPortSoapBinding" bpdm:ID="_lSovAKZJEeOEB6eNkkHbzA"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+        </bpel:flow>
+    </bpel:scope>
+</bpel:process>

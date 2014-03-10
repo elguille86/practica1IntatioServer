@@ -1,0 +1,43 @@
+﻿<wsdl:definitions targetNamespace="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice" xmlns:tns="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice">
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="GeneraCodigo.xsd" namespace="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="GeneraCodigoInput">
+        <wsdl:part name="parameters" element="ns:GeneraCodigoParameterSet"/>
+    </wsdl:message>
+    <wsdl:message name="GeneraCodigoOutput">
+        <wsdl:part name="parameters" element="ns:GeneraCodigoResultSet"/>
+    </wsdl:message>
+    <wsdl:message name="GeneraCodigoFault">
+        <wsdl:part name="fault" element="ns:GeneraCodigoFault"/>
+    </wsdl:message>
+    <wsdl:portType name="GeneraCodigoPort">
+        <wsdl:operation name="GeneraCodigo">
+            <wsdl:input message="tns:GeneraCodigoInput"/>
+            <wsdl:output message="tns:GeneraCodigoOutput"/>
+            <wsdl:fault message="tns:GeneraCodigoFault" name="nsGeneraCodigoFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="GeneraCodigoPortSoapBinding" type="tns:GeneraCodigoPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GeneraCodigo">
+            <soap:operation style="document" soapAction="urn:intalio:connector:jdbc:query:GeneraCodigo"/>
+            <wsdl:input>
+                <soap:body namespace="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body namespace="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="nsGeneraCodigoFault">
+                <soap:body namespace="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="GeneraCodigoService">
+        <wsdl:port binding="tns:GeneraCodigoPortSoapBinding" name="GeneraCodigoPort">
+            <soap:address location="http://localhost:8080/ode/processes/ProyectoSoporte/transacciones/GeneraCodigo"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

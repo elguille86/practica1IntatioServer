@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jdbc:descriptor wsdlLocation="GeneraCodigo.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
+    <jdbc:service name="GeneraCodigoService">
+        <jdbc:operation name="urn:GeneraCodigo" sqlStatement=" select fuc_codigo() as codigo" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice">
+            <jdbc:input/>
+            <jdbc:filter rowsToSendService="1" rowsToFetch="-1" duration="-PT1S">
+                <jdbc:unique scope="none"/>
+            </jdbc:filter>
+            <jdbc:output/>
+        </jdbc:operation>
+        <jdbc:port>
+            <jdbc:address location="http://localhost:8080/ode/processes/GeneraCodigoService"/>
+        </jdbc:port>
+        <jdbc:connection jndiName="java:comp/env/jdbc/">
+            <jdbc:databaseProductName>MySql</jdbc:databaseProductName>
+            <jdbc:databaseProductVersion>5.0</jdbc:databaseProductVersion>
+            <jdbc:driverClass>com.mysql.jdbc.Driver</jdbc:driverClass>
+            <jdbc:databaseUrl>jdbc:mysql://localhost:3306/oite</jdbc:databaseUrl>
+            <jdbc:databaseName>oite</jdbc:databaseName>
+            <jdbc:userName>root</jdbc:userName>
+            <jdbc:password>developer</jdbc:password>
+        </jdbc:connection>
+    </jdbc:service>
+</jdbc:descriptor>

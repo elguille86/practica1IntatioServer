@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xhtml:html xmlns:f="http://orbeon.org/oxf/xml/formatting" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fe="http://example.com/formulario/RecepcionaAtencion/xform" xmlns:xxforms="http://orbeon.org/oxf/xml/xforms">
+  <xhtml:head>
+    <xhtml:style type="text/css" id="intalio-fe-xforms" xml:space="preserve">#xforms_cntrl_group49 {position : absolute; top : 15px; left : 120px; width : 405px; height : 375px; margin : 0px; padding : 0px;}
+#xforms_cntrl_TecResponsable {position : absolute; top : 315px; left : 15px; width : 240px; height : 29px; margin : 0px; padding : 0px;}
+#xforms_cntrl_TecResponsable input {width : 144px; height : 21px}
+#xforms_cntrl_Recepcion_de_Solicitud {position : absolute; top : 15px; left : 73px; width : 165px; height : 30px; margin : 0px; padding : 0px;}
+#xforms_cntrl_Codigo_Indicencia {position : absolute; top : 60px; left : 28px; width : 225px; height : 29px; margin : 0px; padding : 0px;}
+#xforms_cntrl_Codigo_Indicencia input {width : 112px; height : 21px}
+#xforms_cntrl_Oficina {position : absolute; top : 91px; left : 43px; width : 210px; height : 29px; margin : 0px; padding : 0px;}
+#xforms_cntrl_Oficina input {width : 155px; height : 21px}
+#xforms_cntrl_Indicencia {position : absolute; top : 121px; left : 30px; width : 238px; height : 179px; margin : 0px; padding : 0px;}
+#xforms_cntrl_Indicencia textarea {width : 167px; height : 171px}
+#xforms_cntrl_Indicencia label.xforms-label {vertical-align : top}
+</xhtml:style>
+    <xforms:model schema="RecepcionaAtencion.xform.xsd">
+      <!-- Task Input -->
+      <xforms:instance id="taskinput">
+        <fe:input>
+          <group49 xmlns="http://example.com/formulario/RecepcionaAtencion/xform">
+            <TecResponsable/>
+            <Recepcion_de_Solicitud/>
+            <Codigo_Indicencia/>
+            <Oficina/>
+            <Indicencia/>
+          </group49>
+        </fe:input>
+      </xforms:instance>
+      <!-- Task metadata - used only for People Initiating Processes Task forms -->
+      <xforms:instance id="taskmetadata">
+        <taskmetadata/>
+      </xforms:instance>
+      <!-- Task Output -->
+      <xforms:instance id="taskoutput">
+        <fe:output>
+          <group49 xmlns="http://example.com/formulario/RecepcionaAtencion/xform">
+            <TecResponsable/>
+            <Recepcion_de_Solicitud/>
+            <Codigo_Indicencia/>
+            <Oficina/>
+            <Indicencia/>
+          </group49>
+        </fe:output>
+      </xforms:instance>
+      <xforms:action ev:event="xforms-ready">
+        <xforms:action xforms:if="string(instance('taskoutput')/@saved) != 'true'">
+          <xforms:setvalue ref="instance('taskoutput')/fe:group49/fe:TecResponsable" value="instance('taskinput')/fe:group49/fe:TecResponsable"/>
+          <xforms:setvalue ref="instance('taskoutput')/fe:group49/fe:Recepcion_de_Solicitud" value="instance('taskinput')/fe:group49/fe:Recepcion_de_Solicitud"/>
+          <xforms:setvalue ref="instance('taskoutput')/fe:group49/fe:Codigo_Indicencia" value="instance('taskinput')/fe:group49/fe:Codigo_Indicencia"/>
+          <xforms:setvalue ref="instance('taskoutput')/fe:group49/fe:Oficina" value="instance('taskinput')/fe:group49/fe:Oficina"/>
+          <xforms:setvalue ref="instance('taskoutput')/fe:group49/fe:Indicencia" value="instance('taskinput')/fe:group49/fe:Indicencia"/>
+        </xforms:action>
+      </xforms:action>
+      <xforms:bind nodeset="instance('taskoutput')/fe:group49/fe:Oficina" readonly="true()"/>
+      <xforms:bind nodeset="instance('taskinput')/fe:group49/fe:Oficina" readonly="true()"/>
+      <xforms:bind nodeset="instance('taskoutput')/fe:group49/fe:Indicencia" readonly="true()"/>
+      <xforms:bind nodeset="instance('taskinput')/fe:group49/fe:Indicencia" readonly="true()"/>
+    </xforms:model>
+  </xhtml:head>
+  <xhtml:body>
+    <xhtml:div id="intalio-bpms-form">
+      <xhtml:div id="xforms_cntrl_group49">
+        <xforms:group style="width : 405; height : 375" ref="instance('taskoutput')/fe:group49">
+          <xhtml:div id="xforms_cntrl_TecResponsable">
+            <xforms:input ref="instance('taskoutput')/fe:group49/fe:TecResponsable">
+              <xforms:label>Tec.Responsable : </xforms:label>
+            </xforms:input>
+          </xhtml:div>
+          <xhtml:div id="xforms_cntrl_Recepcion_de_Solicitud">
+            <xforms:output ref="instance('taskoutput')/fe:group49/fe:Recepcion_de_Solicitud">
+              <xforms:label>Recepcion de Solicitud</xforms:label>
+            </xforms:output>
+          </xhtml:div>
+          <xhtml:div id="xforms_cntrl_Codigo_Indicencia">
+            <xforms:input ref="instance('taskoutput')/fe:group49/fe:Codigo_Indicencia">
+              <xforms:label>Codigo Indicencia : </xforms:label>
+            </xforms:input>
+          </xhtml:div>
+          <xhtml:div id="xforms_cntrl_Oficina">
+            <xforms:input ref="instance('taskoutput')/fe:group49/fe:Oficina">
+              <xforms:label>Oficina : </xforms:label>
+            </xforms:input>
+          </xhtml:div>
+          <xhtml:div id="xforms_cntrl_Indicencia">
+            <xforms:textarea ref="instance('taskoutput')/fe:group49/fe:Indicencia">
+              <xforms:label>Indicencia : </xforms:label>
+            </xforms:textarea>
+          </xhtml:div>
+        </xforms:group>
+      </xhtml:div>
+    </xhtml:div>
+  </xhtml:body>
+</xhtml:html>

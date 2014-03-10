@@ -1,0 +1,35 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<wsdl:definitions xmlns:RecepcionaAtencion1="http://example.com/formulario/RecepcionaAtencion/xform" xmlns:RecepcionaAtencion="http://example.com/formulario/RecepcionaAtencion/xform/attachments" xmlns:Verificacion1="http://example.com/formulario/Verificacion/xform" xmlns:Verificacion="http://example.com/formulario/Verificacion/xform/attachments" xmlns:notificacion1="http://example.com/formulario/notificacion/xform" xmlns:notificacion="http://example.com/formulario/notificacion/xform/attachments" xmlns:solicitud1="http://example.com/formulario/solicitud/xform" xmlns:solicitud="http://example.com/formulario/solicitud/xform/attachments" xmlns:diag="http://example.com/DiagramaProcesos" xmlns:Secretaria="http://example.com/DiagramaProcesos/Secretaria" xmlns:Server="http://example.com/DiagramaProcesos/Server" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GeneraCodigo="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice" xmlns:ns="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice" xmlns:RegistraTecnico="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice" xmlns:Solucion="urn:intalio.com:connectors:database:proyectosoporte:solucionservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" targetNamespace="http://example.com/DiagramaProcesos">
+    <wsdl:import namespace="http://example.com/formulario/RecepcionaAtencion/xform" location="formulario/RecepcionaAtencion.xform.all.wsdl"/>
+    <wsdl:import namespace="http://example.com/formulario/Verificacion/xform" location="formulario/Verificacion.xform.all.wsdl"/>
+    <wsdl:import namespace="http://example.com/formulario/notificacion/xform" location="formulario/notificacion.xform.all.wsdl"/>
+    <wsdl:import namespace="http://example.com/formulario/solicitud/xform" location="formulario/solicitud.xform.all.wsdl"/>
+    <wsdl:import namespace="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice" location="transacciones/GeneraCodigo.sql/GeneraCodigo.sql.wsdl"/>
+    <wsdl:import namespace="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice" location="transacciones/InsertarSolicitud.sql/InsertarSolicitud.sql.wsdl"/>
+    <wsdl:import namespace="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice" location="transacciones/RegistraTecnico.sql/RegistraTecnico.sql.wsdl"/>
+    <wsdl:import namespace="urn:intalio.com:connectors:database:proyectosoporte:solucionservice" location="transacciones/Solucion.sql/Solucion.sql.wsdl"/>
+    <pnlk:partnerLinkType name="SecretariaAndServerForPortTypeProcessPlk">
+        <pnlk:role name="Secretaria_for_Server" portType="notificacion1:Workflow"/>
+        <pnlk:role name="Server_for_Secretaria" portType="solicitud1:Process"/>
+    </pnlk:partnerLinkType>
+    <pnlk:partnerLinkType name="ServerAndBASEForGeneraCodigoPortPlk">
+        <pnlk:role name="BASE_for_Server" portType="GeneraCodigo:GeneraCodigoPort"/>
+    </pnlk:partnerLinkType>
+    <pnlk:partnerLinkType name="ServerAndBASEForInsertarSolicitudPortPlk">
+        <pnlk:role name="BASE_for_Server" portType="ns:InsertarSolicitudPort"/>
+    </pnlk:partnerLinkType>
+    <pnlk:partnerLinkType name="ServerAndBASEForRegistraTecnicoPortPlk">
+        <pnlk:role name="BASE_for_Server" portType="RegistraTecnico:RegistraTecnicoPort"/>
+    </pnlk:partnerLinkType>
+    <pnlk:partnerLinkType name="ServerAndBASEForSolucionPortPlk">
+        <pnlk:role name="BASE_for_Server" portType="Solucion:SolucionPort"/>
+    </pnlk:partnerLinkType>
+    <pnlk:partnerLinkType name="WFmagic_p4e78KZNEeOEB6eNkkHbzA">
+        <pnlk:role name="Server_for_SoporteForThePortTypeProcess" portType="RecepcionaAtencion1:Process"/>
+        <pnlk:role name="Soporte_for_ServerForXformPort" portType="RecepcionaAtencion1:Workflow"/>
+    </pnlk:partnerLinkType>
+    <pnlk:partnerLinkType name="WFmagic_rrktYKZREeOEB6eNkkHbzA">
+        <pnlk:role name="Server_for_SoporteForThePortTypeProcess" portType="Verificacion1:Process"/>
+        <pnlk:role name="Soporte_for_ServerForXformPort" portType="Verificacion1:Workflow"/>
+    </pnlk:partnerLinkType>
+</wsdl:definitions>

@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xhtml:html xmlns:f="http://orbeon.org/oxf/xml/formatting" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fe="http://example.com/formulario/solicitud/xform" xmlns:xxforms="http://orbeon.org/oxf/xml/xforms">
+  <xhtml:head>
+    <xhtml:style type="text/css" id="intalio-fe-xforms" xml:space="preserve">#xforms_cntrl_group37 {position : absolute; top : 15px; left : 150px; width : 360px; height : 315px; margin : 0px; padding : 0px;}
+#xforms_cntrl_Oficina {position : absolute; top : 60px; left : 75px; width : 255px; height : 31px; margin : 0px; padding : 0px;}
+#xforms_cntrl_Oficina select {width : 200px; height : 23px}
+#xforms_cntrl_Indicencia {position : absolute; top : 195px; left : 15px; width : 315px; height : 60px; margin : 0px; padding : 0px;}
+#xforms_cntrl_Indicencia textarea {width : 244px; height : 52px}
+#xforms_cntrl_Indicencia label.xforms-label {vertical-align : top}
+#xforms_cntrl_Registro_de_Insidencia_de_Soporte {position : absolute; top : 15px; left : 75px; width : 210px; height : 30px; margin : 0px; padding : 0px;}
+#xforms_cntrl_Usuario_que_solicita {position : absolute; top : 106px; left : 60px; width : 270px; height : 29px; margin : 0px; padding : 0px;}
+#xforms_cntrl_Usuario_que_solicita input {width : 150px; height : 21px}
+#xforms_cntrl_Fecha {position : absolute; top : 151px; left : 75px; width : 255px; height : 29px; margin : 0px; padding : 0px;}
+#xforms_cntrl_Fecha input {width : 130px; height : 21px}
+</xhtml:style>
+    <xforms:model schema="solicitud.xform.xsd">
+      <!-- Task Input -->
+      <xforms:instance id="taskinput">
+        <fe:input>
+          <group37 xmlns="http://example.com/formulario/solicitud/xform">
+            <Oficina/>
+            <Indicencia/>
+            <Registro_de_Insidencia_de_Soporte/>
+            <Usuario_que_solicita/>
+            <Fecha/>
+          </group37>
+        </fe:input>
+      </xforms:instance>
+      <!-- Task metadata - used only for People Initiating Processes Task forms -->
+      <xforms:instance id="taskmetadata">
+        <taskmetadata/>
+      </xforms:instance>
+      <!-- Task Output -->
+      <xforms:instance id="taskoutput">
+        <fe:output>
+          <group37 xmlns="http://example.com/formulario/solicitud/xform">
+            <Oficina/>
+            <Indicencia/>
+            <Registro_de_Insidencia_de_Soporte/>
+            <Usuario_que_solicita/>
+            <Fecha/>
+          </group37>
+        </fe:output>
+      </xforms:instance>
+      <xforms:action ev:event="xforms-ready">
+        <xforms:action xforms:if="string(instance('taskoutput')/@saved) != 'true'">
+          <xforms:setvalue ref="instance('taskoutput')/fe:group37/fe:Oficina" value="instance('taskinput')/fe:group37/fe:Oficina"/>
+          <xforms:setvalue ref="instance('taskoutput')/fe:group37/fe:Indicencia" value="instance('taskinput')/fe:group37/fe:Indicencia"/>
+          <xforms:setvalue ref="instance('taskoutput')/fe:group37/fe:Registro_de_Insidencia_de_Soporte" value="instance('taskinput')/fe:group37/fe:Registro_de_Insidencia_de_Soporte"/>
+          <xforms:setvalue ref="instance('taskoutput')/fe:group37/fe:Usuario_que_solicita" value="instance('taskinput')/fe:group37/fe:Usuario_que_solicita"/>
+          <xforms:setvalue ref="instance('taskoutput')/fe:group37/fe:Fecha" value="instance('taskinput')/fe:group37/fe:Fecha"/>
+        </xforms:action>
+      </xforms:action>
+    </xforms:model>
+  </xhtml:head>
+  <xhtml:body>
+    <xhtml:div id="intalio-bpms-form">
+      <xhtml:div id="xforms_cntrl_group37">
+        <xforms:group style="width : 360; height : 315" ref="instance('taskoutput')/fe:group37">
+          <xhtml:div id="xforms_cntrl_Oficina">
+            <xforms:select1 appearance="minimal" ref="instance('taskoutput')/fe:group37/fe:Oficina">
+              <xforms:label>Oficina : </xforms:label>
+              <xforms:item>
+                <xforms:label>SELECT</xforms:label>
+                <xforms:value/>
+              </xforms:item>
+              <xforms:item>
+                <xforms:label>Administracion</xforms:label>
+                <xforms:value>Administracion</xforms:value>
+              </xforms:item>
+              <xforms:item>
+                <xforms:label>RRHH</xforms:label>
+                <xforms:value>RRHH</xforms:value>
+              </xforms:item>
+              <xforms:item>
+                <xforms:label>Economia</xforms:label>
+                <xforms:value>Economia</xforms:value>
+              </xforms:item>
+            </xforms:select1>
+          </xhtml:div>
+          <xhtml:div id="xforms_cntrl_Indicencia">
+            <xforms:textarea ref="instance('taskoutput')/fe:group37/fe:Indicencia">
+              <xforms:label>Indicencia : </xforms:label>
+            </xforms:textarea>
+          </xhtml:div>
+          <xhtml:div id="xforms_cntrl_Registro_de_Insidencia_de_Soporte">
+            <xforms:output ref="instance('taskoutput')/fe:group37/fe:Registro_de_Insidencia_de_Soporte">
+              <xforms:label>Registro de Insidencia de Soporte</xforms:label>
+            </xforms:output>
+          </xhtml:div>
+          <xhtml:div id="xforms_cntrl_Usuario_que_solicita">
+            <xforms:input ref="instance('taskoutput')/fe:group37/fe:Usuario_que_solicita">
+              <xforms:label>Usuario que solicita : </xforms:label>
+            </xforms:input>
+          </xhtml:div>
+          <xhtml:div id="xforms_cntrl_Fecha">
+            <xforms:input ref="instance('taskoutput')/fe:group37/fe:Fecha">
+              <xforms:label>YYYY/mm/dd Fecha : </xforms:label>
+            </xforms:input>
+          </xhtml:div>
+        </xforms:group>
+      </xhtml:div>
+    </xhtml:div>
+  </xhtml:body>
+</xhtml:html>

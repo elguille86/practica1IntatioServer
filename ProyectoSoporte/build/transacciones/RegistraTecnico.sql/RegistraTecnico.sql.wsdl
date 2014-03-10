@@ -1,0 +1,43 @@
+﻿<wsdl:definitions targetNamespace="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice" xmlns:tns="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice">
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="RegistraTecnico.xsd" namespace="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="RegistraTecnicoInput">
+        <wsdl:part name="parameters" element="ns:RegistraTecnicoParameterSet"/>
+    </wsdl:message>
+    <wsdl:message name="RegistraTecnicoOutput">
+        <wsdl:part name="parameters" element="ns:RegistraTecnicoResultSet"/>
+    </wsdl:message>
+    <wsdl:message name="RegistraTecnicoFault">
+        <wsdl:part name="fault" element="ns:RegistraTecnicoFault"/>
+    </wsdl:message>
+    <wsdl:portType name="RegistraTecnicoPort">
+        <wsdl:operation name="RegistraTecnico">
+            <wsdl:input message="tns:RegistraTecnicoInput"/>
+            <wsdl:output message="tns:RegistraTecnicoOutput"/>
+            <wsdl:fault message="tns:RegistraTecnicoFault" name="nsRegistraTecnicoFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="RegistraTecnicoPortSoapBinding" type="tns:RegistraTecnicoPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="RegistraTecnico">
+            <soap:operation style="document" soapAction="urn:intalio:connector:jdbc:query:RegistraTecnico"/>
+            <wsdl:input>
+                <soap:body namespace="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body namespace="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="nsRegistraTecnicoFault">
+                <soap:body namespace="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="RegistraTecnicoService">
+        <wsdl:port binding="tns:RegistraTecnicoPortSoapBinding" name="RegistraTecnicoPort">
+            <soap:address location="http://localhost:8080/ode/processes/ProyectoSoporte/transacciones/RegistraTecnico"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

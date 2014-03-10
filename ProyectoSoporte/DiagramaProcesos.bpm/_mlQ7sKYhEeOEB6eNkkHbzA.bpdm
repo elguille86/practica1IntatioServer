@@ -1,0 +1,53 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:notificacion="http://example.com/formulario/notificacion/xform/attachments" xmlns:solicitud="http://example.com/formulario/solicitud/xform/attachments" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:solicitud1="http://example.com/formulario/solicitud/xform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:this="http://thisdiagram/Secretaria" xmlns:Server="http://thisdiagram/Server" xmlns:notificacion1="http://example.com/formulario/notificacion/xform" xmlns:diag="http://thisdiagram" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Secretaria">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/notificacion/xform/attachments" bpdm:prefix="notificacion" bpdm:comment="contrib=&apos;project:///formulario/notificacion.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/solicitud/xform/attachments" bpdm:prefix="solicitud" bpdm:comment="contrib=&apos;project:///formulario/solicitud.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/solicitud/xform" bpdm:prefix="solicitud1" bpdm:comment="contrib=&apos;project:///formulario/solicitud.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Secretaria" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Server" bpdm:prefix="Server" bpdm:comment="contrib=&apos;partner-pool:///_U-eacKY9EeOEB6eNkkHbzA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/notificacion/xform" bpdm:prefix="notificacion1" bpdm:comment="contrib=&apos;project:///formulario/notificacion.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_U-eacKY9EeOEB6eNkkHbzA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/solicitud.xform.all.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/solicitud.xform.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_U-eacKY9EeOEB6eNkkHbzA" bpdm:label="Server"/>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/notificacion.xform.all.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/notificacion.xform.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:label="Secretaria" bpdm:ID="_mlQ7sKYhEeOEB6eNkkHbzA">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="secretariaAndServerForPortTypeProcessPlkVar" partnerLinkType="diag:SecretariaAndServerForPortTypeProcessPlk" initializePartnerRole="yes" myRole="Secretaria_for_Server" bpdm:enableSharing="false" bpdm:providedService="notificacion1:WorkflowSoapService" bpdm:providedPort="xformPort" bpdm:provideSOAPAddress="http://localhost:8080/fds/workflow/xform" bpdm:providedIsDefault="true" partnerRole="Server_for_Secretaria" bpdm:invokedService="Server:SecretariaAndServerForPortTypeProcessPlkService" bpdm:invokedPort="Server_for_SecretariaPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Server/Secretaria/SecretariaAndServerForPortTypeProcessPlk" bpdm:invokedIsDefault="true" bpdm:clientTasks="_mlQ7sKYhEeOEB6eNkkHbzA:_PtcIMKZJEeOEB6eNkkHbzA, _mlQ7sKYhEeOEB6eNkkHbzA:_uVfpcKazEeOjWt5atXfUXQ" bpdm:isManaged="true" bpdm:otherPoolId="_U-eacKY9EeOEB6eNkkHbzA"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="solicitud1InitProcessRequestMsg" messageType="solicitud1:initProcessRequest" bpdm:id="_gUAR0KZJEeOEB6eNkkHbzA" bpdm:messageIds=" out:_gTy2cKZJEeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="root">
+                    <bpel:literal bpdm:linkedMessageType="solicitud1:initProcessRequest" bpdm:linkedPart="root"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="solicitud1InitProcessResponseMsg" messageType="solicitud1:initProcessResponse" bpdm:id="_hVLa9aZJEeOEB6eNkkHbzA" bpdm:messageIds="inc:_hU348KZJEeOEB6eNkkHbzA"/>
+            <bpel:variable name="notificacion1NotifyRequestMsg" messageType="notificacion1:notifyRequest" binding="notificacion1:WorkflowSoapBinding" operation="notify" opMsgType="0" bpdm:id="_vaPrBaazEeOjWt5atXfUXQ" bpdm:messageIds="inc:_vZgEIKazEeOjWt5atXfUXQ"/>
+            <bpel:variable name="notificacion1NotifyResponseMsg" messageType="notificacion1:notifyResponse" binding="notificacion1:WorkflowSoapBinding" operation="notify" opMsgType="1" bpdm:id="_vsbAIKazEeOjWt5atXfUXQ" bpdm:messageIds=" out:_vsNkwKazEeOjWt5atXfUXQ">
+                <bpel:from bpdm:toPart="root">
+                    <bpel:literal bpdm:linkedMessageType="notificacion1:notifyResponse" bpdm:linkedPart="root" bpdm:binding="notificacion1:WorkflowSoapBinding" bpdm:opMsgType="1" bpdm:operation="notify"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:flow>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="notify" partnerLink="secretariaAndServerForPortTypeProcessPlkVar" portType="notificacion1:Workflow" isMyRole="true" enableSharing="false" bpdm:label="notificacion-notify" bpdm:ID="_uVfpcKazEeOjWt5atXfUXQ">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="notificacion1NotifyRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="notificacion1:notifyRequest" bpdm:binding="notificacion1:WorkflowSoapBinding" bpdm:ID="_vZgEIKazEeOjWt5atXfUXQ"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="notificacion1NotifyResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="notificacion1:notifyResponse" bpdm:binding="notificacion1:WorkflowSoapBinding" bpdm:ID="_vsNkwKazEeOjWt5atXfUXQ"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="initProcess" partnerLink="secretariaAndServerForPortTypeProcessPlkVar" portType="solicitud1:Process" isMyRole="false" enableSharing="false" bpdm:label="solicitud-init request" bpdm:ID="_PtcIMKZJEeOEB6eNkkHbzA">
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="solicitud1InitProcessRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="solicitud1:initProcessRequest" bpdm:ID="_gTy2cKZJEeOEB6eNkkHbzA"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="solicitud1InitProcessResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="solicitud1:initProcessResponse" bpdm:ID="_hU348KZJEeOEB6eNkkHbzA"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+        </bpel:flow>
+    </bpel:scope>
+</bpel:process>

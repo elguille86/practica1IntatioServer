@@ -1,0 +1,1 @@
+ select fuc_codigo() as codigo

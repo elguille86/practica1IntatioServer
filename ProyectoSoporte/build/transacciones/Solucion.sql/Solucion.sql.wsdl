@@ -1,0 +1,43 @@
+﻿<wsdl:definitions targetNamespace="urn:intalio.com:connectors:database:proyectosoporte:solucionservice" xmlns:tns="urn:intalio.com:connectors:database:proyectosoporte:solucionservice" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns="urn:intalio.com:connectors:database:proyectosoporte:solucionservice">
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="Solucion.xsd" namespace="urn:intalio.com:connectors:database:proyectosoporte:solucionservice"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="SolucionInput">
+        <wsdl:part name="parameters" element="ns:SolucionParameterSet"/>
+    </wsdl:message>
+    <wsdl:message name="SolucionOutput">
+        <wsdl:part name="parameters" element="ns:SolucionResultSet"/>
+    </wsdl:message>
+    <wsdl:message name="SolucionFault">
+        <wsdl:part name="fault" element="ns:SolucionFault"/>
+    </wsdl:message>
+    <wsdl:portType name="SolucionPort">
+        <wsdl:operation name="Solucion">
+            <wsdl:input message="tns:SolucionInput"/>
+            <wsdl:output message="tns:SolucionOutput"/>
+            <wsdl:fault message="tns:SolucionFault" name="nsSolucionFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SolucionPortSoapBinding" type="tns:SolucionPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Solucion">
+            <soap:operation style="document" soapAction="urn:intalio:connector:jdbc:query:Solucion"/>
+            <wsdl:input>
+                <soap:body namespace="urn:intalio.com:connectors:database:proyectosoporte:solucionservice" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body namespace="urn:intalio.com:connectors:database:proyectosoporte:solucionservice" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="nsSolucionFault">
+                <soap:body namespace="urn:intalio.com:connectors:database:proyectosoporte:solucionservice" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="SolucionService">
+        <wsdl:port binding="tns:SolucionPortSoapBinding" name="SolucionPort">
+            <soap:address location="http://localhost:8080/ode/processes/ProyectoSoporte/transacciones/Solucion"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

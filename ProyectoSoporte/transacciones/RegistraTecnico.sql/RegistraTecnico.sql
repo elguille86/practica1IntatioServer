@@ -1,0 +1,1 @@
+update tbsolicitudatencion set TecResponsable = ? where id = ?

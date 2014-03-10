@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xhtml:html xmlns:f="http://orbeon.org/oxf/xml/formatting" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fe="http://example.com/formulario/Verificacion/xform" xmlns:xxforms="http://orbeon.org/oxf/xml/xforms">
+  <xhtml:head>
+    <xhtml:style type="text/css" id="intalio-fe-xforms" xml:space="preserve">#xforms_cntrl_solucion {position : absolute; top : 225px; left : 45px; width : 480px; height : 120px; margin : 0px; padding : 0px;}
+#xforms_cntrl_solucion textarea {width : 418px; height : 112px}
+#xforms_cntrl_solucion label.xforms-label {vertical-align : top}
+#xforms_cntrl_Tec_Responsable {position : absolute; top : 180px; left : 45px; width : 480px; height : 29px; margin : 0px; padding : 0px;}
+#xforms_cntrl_Tec_Responsable input {width : 375px; height : 21px}
+#xforms_cntrl_Insidencia_ {position : absolute; top : 105px; left : 45px; width : 480px; height : 60px; margin : 0px; padding : 0px;}
+#xforms_cntrl_Insidencia_ textarea {width : 410px; height : 52px}
+#xforms_cntrl_Insidencia_ label.xforms-label {vertical-align : top}
+#xforms_cntrl_Oficina {position : absolute; top : 61px; left : 375px; width : 165px; height : 29px; margin : 0px; padding : 0px;}
+#xforms_cntrl_Oficina input {width : 110px; height : 21px}
+#xforms_cntrl_Codigo_Insidencia_ {position : absolute; top : 60px; left : 45px; width : 285px; height : 29px; margin : 0px; padding : 0px;}
+#xforms_cntrl_Codigo_Insidencia_ input {width : 173px; height : 21px}
+#xforms_cntrl_Atenciones {position : absolute; top : 15px; left : 255px; width : 100px; height : 22px; margin : 0px; padding : 0px;}
+</xhtml:style>
+    <xforms:model schema="Verificacion.xform.xsd">
+      <!-- Task Input -->
+      <xforms:instance id="taskinput">
+        <fe:input>
+          <solucion xmlns="http://example.com/formulario/Verificacion/xform"/>
+          <Tec_Responsable xmlns="http://example.com/formulario/Verificacion/xform"/>
+          <Insidencia_ xmlns="http://example.com/formulario/Verificacion/xform"/>
+          <Oficina xmlns="http://example.com/formulario/Verificacion/xform"/>
+          <Codigo_Insidencia_ xmlns="http://example.com/formulario/Verificacion/xform"/>
+          <Atenciones xmlns="http://example.com/formulario/Verificacion/xform"/>
+        </fe:input>
+      </xforms:instance>
+      <!-- Task metadata - used only for People Initiating Processes Task forms -->
+      <xforms:instance id="taskmetadata">
+        <taskmetadata/>
+      </xforms:instance>
+      <!-- Task Output -->
+      <xforms:instance id="taskoutput">
+        <fe:output>
+          <solucion xmlns="http://example.com/formulario/Verificacion/xform"/>
+          <Tec_Responsable xmlns="http://example.com/formulario/Verificacion/xform"/>
+          <Insidencia_ xmlns="http://example.com/formulario/Verificacion/xform"/>
+          <Oficina xmlns="http://example.com/formulario/Verificacion/xform"/>
+          <Codigo_Insidencia_ xmlns="http://example.com/formulario/Verificacion/xform"/>
+          <Atenciones xmlns="http://example.com/formulario/Verificacion/xform"/>
+        </fe:output>
+      </xforms:instance>
+      <xforms:action ev:event="xforms-ready">
+        <xforms:action xforms:if="string(instance('taskoutput')/@saved) != 'true'">
+          <xforms:setvalue ref="instance('taskoutput')/fe:solucion" value="instance('taskinput')/fe:solucion"/>
+          <xforms:setvalue ref="instance('taskoutput')/fe:Tec_Responsable" value="instance('taskinput')/fe:Tec_Responsable"/>
+          <xforms:setvalue ref="instance('taskoutput')/fe:Insidencia_" value="instance('taskinput')/fe:Insidencia_"/>
+          <xforms:setvalue ref="instance('taskoutput')/fe:Oficina" value="instance('taskinput')/fe:Oficina"/>
+          <xforms:setvalue ref="instance('taskoutput')/fe:Codigo_Insidencia_" value="instance('taskinput')/fe:Codigo_Insidencia_"/>
+          <xforms:setvalue ref="instance('taskoutput')/fe:Atenciones" value="instance('taskinput')/fe:Atenciones"/>
+        </xforms:action>
+      </xforms:action>
+    </xforms:model>
+  </xhtml:head>
+  <xhtml:body>
+    <xhtml:div id="intalio-bpms-form">
+      <xhtml:div id="xforms_cntrl_solucion">
+        <xforms:textarea ref="instance('taskoutput')/fe:solucion">
+          <xforms:label>solucion : </xforms:label>
+        </xforms:textarea>
+      </xhtml:div>
+      <xhtml:div id="xforms_cntrl_Tec_Responsable">
+        <xforms:input ref="instance('taskoutput')/fe:Tec_Responsable">
+          <xforms:label>Tec Responsable : </xforms:label>
+        </xforms:input>
+      </xhtml:div>
+      <xhtml:div id="xforms_cntrl_Insidencia_">
+        <xforms:textarea ref="instance('taskoutput')/fe:Insidencia_">
+          <xforms:label>Insidencia : </xforms:label>
+        </xforms:textarea>
+      </xhtml:div>
+      <xhtml:div id="xforms_cntrl_Oficina">
+        <xforms:input ref="instance('taskoutput')/fe:Oficina">
+          <xforms:label>Oficina : </xforms:label>
+        </xforms:input>
+      </xhtml:div>
+      <xhtml:div id="xforms_cntrl_Codigo_Insidencia_">
+        <xforms:input ref="instance('taskoutput')/fe:Codigo_Insidencia_">
+          <xforms:label>Codigo Insidencia : </xforms:label>
+        </xforms:input>
+      </xhtml:div>
+      <xhtml:div id="xforms_cntrl_Atenciones">
+        <xforms:output ref="instance('taskoutput')/fe:Atenciones">
+          <xforms:label>Atenciones</xforms:label>
+        </xforms:output>
+      </xhtml:div>
+    </xhtml:div>
+  </xhtml:body>
+</xhtml:html>

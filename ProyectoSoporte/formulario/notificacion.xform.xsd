@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:fe="http://example.com/formulario/notificacion/xform"
+    xmlns:xform="http://example.com/formulario/notificacion/xform"
+    targetNamespace="http://example.com/formulario/notificacion/xform" elementFormDefault="qualified">
+    <xs:element name="output">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="group20">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Notificacion_de_Soporte" type="xs:string"/>
+                            <xs:element name="Codigo_Insidencia" type="xs:string"/>
+                            <xs:element name="Oficina" type="xs:string"/>
+                            <xs:element name="Insidencia" type="xs:string"/>
+                            <xs:element name="Tec_Responsable" type="xs:string"/>
+                            <xs:element name="solucion" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="taskId" type="xs:string"/>
+            <xs:attribute name="participantToken" type="xs:string"/>
+            <xs:attribute name="user" type="xs:string"/>
+            <xs:attribute name="formUrl" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="input">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="group20">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Notificacion_de_Soporte" type="xs:string"/>
+                            <xs:element name="Codigo_Insidencia" type="xs:string"/>
+                            <xs:element name="Oficina" type="xs:string"/>
+                            <xs:element name="Insidencia" type="xs:string"/>
+                            <xs:element name="Tec_Responsable" type="xs:string"/>
+                            <xs:element name="solucion" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

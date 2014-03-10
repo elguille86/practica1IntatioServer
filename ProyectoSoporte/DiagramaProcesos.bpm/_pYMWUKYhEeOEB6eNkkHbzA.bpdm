@@ -1,0 +1,74 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:Verificacion="http://example.com/formulario/Verificacion/xform/attachments" xmlns:RecepcionaAtencion1="http://example.com/formulario/RecepcionaAtencion/xform" xmlns:RecepcionaAtencion="http://example.com/formulario/RecepcionaAtencion/xform/attachments" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/Soporte" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Verificacion1="http://example.com/formulario/Verificacion/xform" xmlns:Server="http://thisdiagram/Server" xmlns:diag="http://thisdiagram" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Soporte">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/Verificacion/xform/attachments" bpdm:prefix="Verificacion" bpdm:comment="contrib=&apos;project:///formulario/Verificacion.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/RecepcionaAtencion/xform" bpdm:prefix="RecepcionaAtencion1" bpdm:comment="contrib=&apos;project:///formulario/RecepcionaAtencion.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/RecepcionaAtencion/xform/attachments" bpdm:prefix="RecepcionaAtencion" bpdm:comment="contrib=&apos;project:///formulario/RecepcionaAtencion.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Soporte" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/Verificacion/xform" bpdm:prefix="Verificacion1" bpdm:comment="contrib=&apos;project:///formulario/Verificacion.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Server" bpdm:prefix="Server" bpdm:comment="contrib=&apos;partner-pool:///_U-eacKY9EeOEB6eNkkHbzA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_U-eacKY9EeOEB6eNkkHbzA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/RecepcionaAtencion.xform.all.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/RecepcionaAtencion.xform.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_U-eacKY9EeOEB6eNkkHbzA" bpdm:label="Server"/>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/Verificacion.xform.all.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/Verificacion.xform.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:label="Soporte" bpdm:ID="_pYMWUKYhEeOEB6eNkkHbzA">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="wFmagic_p4e78KZNEeOEB6eNkkHbzAPlkVar" partnerLinkType="diag:WFmagic_p4e78KZNEeOEB6eNkkHbzA" initializePartnerRole="no" myRole="Soporte_for_ServerForXformPort" bpdm:enableSharing="false" bpdm:providedService="RecepcionaAtencion1:WorkflowSoapService" bpdm:providedPort="xformPort" bpdm:provideSOAPAddress="http://localhost:8080/fds/workflow/xform" bpdm:providedIsDefault="true" partnerRole="Server_for_SoporteForThePortTypeProcess" bpdm:invokedService="Server:WFmagic_p4e78KZNEeOEB6eNkkHbzAService" bpdm:invokedPort="Server_for_SoporteForThePortTypeProcessPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Server/Soporte/WFmagic_p4e78KZNEeOEB6eNkkHbzA" bpdm:invokedIsDefault="true" bpdm:clientTasks="_pYMWUKYhEeOEB6eNkkHbzA:_p4gxIKZNEeOEB6eNkkHbzA, _pYMWUKYhEeOEB6eNkkHbzA:_p4e78KZNEeOEB6eNkkHbzA" bpdm:isManaged="true" bpdm:otherPoolId="_U-eacKY9EeOEB6eNkkHbzA"/>
+            <bpel:partnerLink name="wFmagic_rrktYKZREeOEB6eNkkHbzAPlkVar" partnerLinkType="diag:WFmagic_rrktYKZREeOEB6eNkkHbzA" initializePartnerRole="no" myRole="Soporte_for_ServerForXformPort" bpdm:enableSharing="false" bpdm:providedService="Verificacion1:WorkflowSoapService" bpdm:providedPort="xformPort" bpdm:provideSOAPAddress="http://localhost:8080/fds/workflow/xform" bpdm:providedIsDefault="true" partnerRole="Server_for_SoporteForThePortTypeProcess" bpdm:invokedService="Server:WFmagic_rrktYKZREeOEB6eNkkHbzAService" bpdm:invokedPort="Server_for_SoporteForThePortTypeProcessPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Server/Soporte/WFmagic_rrktYKZREeOEB6eNkkHbzA" bpdm:invokedIsDefault="true" bpdm:clientTasks="_pYMWUKYhEeOEB6eNkkHbzA:_rrmikKZREeOEB6eNkkHbzA, _pYMWUKYhEeOEB6eNkkHbzA:_rrktYKZREeOEB6eNkkHbzA" bpdm:isManaged="true" bpdm:otherPoolId="_U-eacKY9EeOEB6eNkkHbzA"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="recepcionaAtencion1CreateTaskRequestMsg" messageType="RecepcionaAtencion1:createTaskRequest" binding="RecepcionaAtencion1:WorkflowSoapBinding" operation="createTask" opMsgType="0" bpdm:id="_-4h8ZaZPEeOEB6eNkkHbzA" bpdm:messageIds="inc:_-4KI8KZPEeOEB6eNkkHbzA"/>
+            <bpel:variable name="recepcionaAtencion1CreateTaskResponseMsg" messageType="RecepcionaAtencion1:createTaskResponse" binding="RecepcionaAtencion1:WorkflowSoapBinding" operation="createTask" opMsgType="1" bpdm:id="__H4nAKZPEeOEB6eNkkHbzA" bpdm:messageIds=" out:__HlsEKZPEeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="root">
+                    <bpel:literal bpdm:linkedMessageType="RecepcionaAtencion1:createTaskResponse" bpdm:linkedPart="root" bpdm:binding="RecepcionaAtencion1:WorkflowSoapBinding" bpdm:opMsgType="1" bpdm:operation="createTask"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="recepcionaAtencion1NotifyTaskCompletionRequestMsg" messageType="RecepcionaAtencion1:notifyTaskCompletionRequest" bpdm:id="_CRYHgKZQEeOEB6eNkkHbzA" bpdm:messageIds=" out:_CRFMkKZQEeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="root">
+                    <bpel:literal bpdm:linkedMessageType="RecepcionaAtencion1:notifyTaskCompletionRequest" bpdm:linkedPart="root"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="recepcionaAtencion1NotifyTaskCompletionResponseMsg" messageType="RecepcionaAtencion1:notifyTaskCompletionResponse" bpdm:id="_C7Fy5aZQEeOEB6eNkkHbzA" bpdm:messageIds="inc:_C6f9AKZQEeOEB6eNkkHbzA"/>
+            <bpel:variable name="verificacion1CreateTaskRequestMsg" messageType="Verificacion1:createTaskRequest" binding="Verificacion1:WorkflowSoapBinding" operation="createTask" opMsgType="0" bpdm:id="_uFNeQKZREeOEB6eNkkHbzA" bpdm:messageIds="inc:_uEtvAKZREeOEB6eNkkHbzA"/>
+            <bpel:variable name="verificacion1CreateTaskResponseMsg" messageType="Verificacion1:createTaskResponse" binding="Verificacion1:WorkflowSoapBinding" operation="createTask" opMsgType="1" bpdm:id="_uYdKYKZREeOEB6eNkkHbzA" bpdm:messageIds=" out:_uYK2gKZREeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="root">
+                    <bpel:literal bpdm:linkedMessageType="Verificacion1:createTaskResponse" bpdm:linkedPart="root" bpdm:binding="Verificacion1:WorkflowSoapBinding" bpdm:opMsgType="1" bpdm:operation="createTask"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="verificacion1NotifyTaskCompletionRequestMsg" messageType="Verificacion1:notifyTaskCompletionRequest" bpdm:id="_vVeMQKZREeOEB6eNkkHbzA" bpdm:messageIds=" out:_vVNGgKZREeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="root">
+                    <bpel:literal bpdm:linkedMessageType="Verificacion1:notifyTaskCompletionRequest" bpdm:linkedPart="root"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="verificacion1NotifyTaskCompletionResponseMsg" messageType="Verificacion1:notifyTaskCompletionResponse" bpdm:id="_vm_aFaZREeOEB6eNkkHbzA" bpdm:messageIds="inc:_vmSPcKZREeOEB6eNkkHbzA"/>
+        </bpel:variables>
+        <bpel:flow>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="createTask" partnerLink="wFmagic_p4e78KZNEeOEB6eNkkHbzAPlkVar" portType="RecepcionaAtencion1:Workflow" isMyRole="true" enableSharing="false" bpdm:label="RecepcionaAtencion-create" bpdm:ID="_p4e78KZNEeOEB6eNkkHbzA">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="recepcionaAtencion1CreateTaskRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="RecepcionaAtencion1:createTaskRequest" bpdm:binding="RecepcionaAtencion1:WorkflowSoapBinding" bpdm:ID="_-4KI8KZPEeOEB6eNkkHbzA"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="recepcionaAtencion1CreateTaskResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="RecepcionaAtencion1:createTaskResponse" bpdm:binding="RecepcionaAtencion1:WorkflowSoapBinding" bpdm:ID="__HlsEKZPEeOEB6eNkkHbzA"></bpdm:linkset>
+                </bpdm:messagingtask>
+                <bpdm:messagingtask operation="notifyTaskCompletion" partnerLink="wFmagic_p4e78KZNEeOEB6eNkkHbzAPlkVar" portType="RecepcionaAtencion1:Process" isMyRole="false" enableSharing="false" bpdm:label="RecepcionaAtencion-complete" bpdm:ID="_p4gxIKZNEeOEB6eNkkHbzA">
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="recepcionaAtencion1NotifyTaskCompletionRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="RecepcionaAtencion1:notifyTaskCompletionRequest" bpdm:ID="_CRFMkKZQEeOEB6eNkkHbzA"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="recepcionaAtencion1NotifyTaskCompletionResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="RecepcionaAtencion1:notifyTaskCompletionResponse" bpdm:ID="_C6f9AKZQEeOEB6eNkkHbzA"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="createTask" partnerLink="wFmagic_rrktYKZREeOEB6eNkkHbzAPlkVar" portType="Verificacion1:Workflow" isMyRole="true" enableSharing="false" bpdm:label="Verificacion-create" bpdm:ID="_rrktYKZREeOEB6eNkkHbzA">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="verificacion1CreateTaskRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="Verificacion1:createTaskRequest" bpdm:binding="Verificacion1:WorkflowSoapBinding" bpdm:ID="_uEtvAKZREeOEB6eNkkHbzA"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="verificacion1CreateTaskResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="Verificacion1:createTaskResponse" bpdm:binding="Verificacion1:WorkflowSoapBinding" bpdm:ID="_uYK2gKZREeOEB6eNkkHbzA"></bpdm:linkset>
+                </bpdm:messagingtask>
+                <bpdm:messagingtask operation="notifyTaskCompletion" partnerLink="wFmagic_rrktYKZREeOEB6eNkkHbzAPlkVar" portType="Verificacion1:Process" isMyRole="false" enableSharing="false" bpdm:label="Verificacion-complete" bpdm:ID="_rrmikKZREeOEB6eNkkHbzA">
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="verificacion1NotifyTaskCompletionRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="Verificacion1:notifyTaskCompletionRequest" bpdm:ID="_vVNGgKZREeOEB6eNkkHbzA"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="verificacion1NotifyTaskCompletionResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="Verificacion1:notifyTaskCompletionResponse" bpdm:ID="_vmSPcKZREeOEB6eNkkHbzA"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+        </bpel:flow>
+    </bpel:scope>
+</bpel:process>

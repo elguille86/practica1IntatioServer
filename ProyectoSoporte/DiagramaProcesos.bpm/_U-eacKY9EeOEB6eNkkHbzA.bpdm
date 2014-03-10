@@ -1,0 +1,320 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:notificacion="http://example.com/formulario/notificacion/xform/attachments" xmlns:Verificacion="http://example.com/formulario/Verificacion/xform/attachments" xmlns:ns="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice" xmlns:RecepcionaAtencion="http://example.com/formulario/RecepcionaAtencion/xform/attachments" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:solicitud1="http://example.com/formulario/solicitud/xform" xmlns:Secretaria="http://thisdiagram/Secretaria" xmlns:this="http://thisdiagram/Server" xmlns:diag="http://thisdiagram" xmlns:Solucion="urn:intalio.com:connectors:database:proyectosoporte:solucionservice" xmlns:solicitud="http://example.com/formulario/solicitud/xform/attachments" xmlns:RecepcionaAtencion1="http://example.com/formulario/RecepcionaAtencion/xform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:GeneraCodigo="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice" xmlns:RegistraTecnico="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice" xmlns:Verificacion1="http://example.com/formulario/Verificacion/xform" xmlns:notificacion1="http://example.com/formulario/notificacion/xform" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Server">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/notificacion/xform/attachments" bpdm:prefix="notificacion" bpdm:comment="contrib=&apos;project:///formulario/notificacion.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/Verificacion/xform/attachments" bpdm:prefix="Verificacion" bpdm:comment="contrib=&apos;project:///formulario/Verificacion.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice" bpdm:prefix="ns" bpdm:comment="contrib=&apos;project:///transacciones/InsertarSolicitud.sql/InsertarSolicitud.sql.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/RecepcionaAtencion/xform/attachments" bpdm:prefix="RecepcionaAtencion" bpdm:comment="contrib=&apos;project:///formulario/RecepcionaAtencion.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/solicitud/xform" bpdm:prefix="solicitud1" bpdm:comment="contrib=&apos;project:///formulario/solicitud.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Secretaria" bpdm:prefix="Secretaria" bpdm:comment="contrib=&apos;partner-pool:///_mlQ7sKYhEeOEB6eNkkHbzA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Server" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_mlQ7sKYhEeOEB6eNkkHbzA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:proyectosoporte:solucionservice" bpdm:prefix="Solucion" bpdm:comment="contrib=&apos;project:///transacciones/Solucion.sql/Solucion.sql.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/solicitud/xform/attachments" bpdm:prefix="solicitud" bpdm:comment="contrib=&apos;project:///formulario/solicitud.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/RecepcionaAtencion/xform" bpdm:prefix="RecepcionaAtencion1" bpdm:comment="contrib=&apos;project:///formulario/RecepcionaAtencion.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice" bpdm:prefix="GeneraCodigo" bpdm:comment="contrib=&apos;project:///transacciones/GeneraCodigo.sql/GeneraCodigo.sql.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice" bpdm:prefix="RegistraTecnico" bpdm:comment="contrib=&apos;project:///transacciones/RegistraTecnico.sql/RegistraTecnico.sql.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/Verificacion/xform" bpdm:prefix="Verificacion1" bpdm:comment="contrib=&apos;project:///formulario/Verificacion.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://example.com/formulario/notificacion/xform" bpdm:prefix="notificacion1" bpdm:comment="contrib=&apos;project:///formulario/notificacion.xform.all.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <wsdl:service name="WFmagic_rrktYKZREeOEB6eNkkHbzAService">
+                <wsdl:port name="Server_for_SoporteForThePortTypeProcessPort" binding="this:WFmagic_rrktYKZREeOEB6eNkkHbzAServiceBinding">
+                    <address location="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Server/Soporte/WFmagic_rrktYKZREeOEB6eNkkHbzA"/>
+                </wsdl:port>
+            </wsdl:service>
+            <bpel:binding name="WFmagic_rrktYKZREeOEB6eNkkHbzAServiceBinding" type="Verificacion1:Process" bpdm:isSynchronized="true"/>
+            <wsdl:service name="WFmagic_p4e78KZNEeOEB6eNkkHbzAService">
+                <wsdl:port name="Server_for_SoporteForThePortTypeProcessPort" binding="this:WFmagic_p4e78KZNEeOEB6eNkkHbzAServiceBinding">
+                    <address location="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Server/Soporte/WFmagic_p4e78KZNEeOEB6eNkkHbzA"/>
+                </wsdl:port>
+            </wsdl:service>
+            <bpel:binding name="WFmagic_p4e78KZNEeOEB6eNkkHbzAServiceBinding" type="RecepcionaAtencion1:Process" bpdm:isSynchronized="true"/>
+            <wsdl:service name="SecretariaAndServerForPortTypeProcessPlkService">
+                <wsdl:port name="Server_for_SecretariaPort" binding="this:SecretariaAndServerForPortTypeProcessPlkServiceBinding">
+                    <address location="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Server/Secretaria/SecretariaAndServerForPortTypeProcessPlk"/>
+                </wsdl:port>
+            </wsdl:service>
+            <bpel:binding name="SecretariaAndServerForPortTypeProcessPlkServiceBinding" type="solicitud1:Process" bpdm:isSynchronized="true"/>
+        </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/solicitud.xform.all.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/solicitud.xform.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/InsertarSolicitud.sql/InsertarSolicitud.sql.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/InsertarSolicitud.sql/InsertarSolicitud.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/RecepcionaAtencion.xform.all.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/RecepcionaAtencion.xform.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/GeneraCodigo.sql/GeneraCodigo.sql.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/GeneraCodigo.sql/GeneraCodigo.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_mlQ7sKYhEeOEB6eNkkHbzA" bpdm:label="Secretaria"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_AKRywKY9EeOEB6eNkkHbzA" bpdm:label="BASE"/>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/RegistraTecnico.sql/RegistraTecnico.sql.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/RegistraTecnico.sql/RegistraTecnico.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_pYMWUKYhEeOEB6eNkkHbzA" bpdm:label="Soporte"/>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/Verificacion.xform.all.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/Verificacion.xform.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/Solucion.sql/Solucion.sql.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///transacciones/Solucion.sql/Solucion.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/notificacion.xform.all.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///formulario/notificacion.xform.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:label="Server" bpdm:ID="_U-eacKY9EeOEB6eNkkHbzA">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="secretariaAndServerForPortTypeProcessPlkVar" partnerLinkType="diag:SecretariaAndServerForPortTypeProcessPlk" initializePartnerRole="yes" myRole="Server_for_Secretaria" bpdm:enableSharing="false" bpdm:providedService="this:SecretariaAndServerForPortTypeProcessPlkService" bpdm:providedPort="Server_for_SecretariaPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Server/Secretaria/SecretariaAndServerForPortTypeProcessPlk" bpdm:providedIsDefault="true" partnerRole="Secretaria_for_Server" bpdm:invokedService="notificacion1:WorkflowSoapService" bpdm:invokedPort="xformPort" bpdm:invokedSOAPAddress="http://localhost:8080/fds/workflow/xform" bpdm:invokedIsDefault="true" bpdm:clientTasks="_U-eacKY9EeOEB6eNkkHbzA:_vGeacKazEeOjWt5atXfUXQ, _U-eacKY9EeOEB6eNkkHbzA:_YEX0YKY9EeOEB6eNkkHbzA" bpdm:isManaged="true" bpdm:otherPoolId="_mlQ7sKYhEeOEB6eNkkHbzA"/>
+            <bpel:partnerLink name="serverAndBASEForGeneraCodigoPortPlkVar" partnerLinkType="diag:ServerAndBASEForGeneraCodigoPortPlk" initializePartnerRole="yes" partnerRole="BASE_for_Server" bpdm:invokedService="GeneraCodigo:GeneraCodigoService" bpdm:invokedPort="GeneraCodigoPort" bpdm:invokedSOAPAddress="http://localhost:8080/ode/processes/ProyectoSoporte/transacciones/GeneraCodigo" bpdm:invokedIsDefault="true" bpdm:clientTasks="_U-eacKY9EeOEB6eNkkHbzA:_T6mFIKZJEeOEB6eNkkHbzA" bpdm:isManaged="true" bpdm:otherPoolId="_AKRywKY9EeOEB6eNkkHbzA"/>
+            <bpel:partnerLink name="serverAndBASEForInsertarSolicitudPortPlkVar" partnerLinkType="diag:ServerAndBASEForInsertarSolicitudPortPlk" initializePartnerRole="yes" partnerRole="BASE_for_Server" bpdm:invokedService="ns:InsertarSolicitudService" bpdm:invokedPort="InsertarSolicitudPort" bpdm:invokedSOAPAddress="http://localhost:8080/ode/processes/ProyectoSoporte/transacciones/InsertarSolicitud" bpdm:invokedIsDefault="true" bpdm:clientTasks="_U-eacKY9EeOEB6eNkkHbzA:_UiB4kKZJEeOEB6eNkkHbzA" bpdm:isManaged="true" bpdm:otherPoolId="_AKRywKY9EeOEB6eNkkHbzA"/>
+            <bpel:partnerLink name="wFmagic_p4e78KZNEeOEB6eNkkHbzAPlkVar" partnerLinkType="diag:WFmagic_p4e78KZNEeOEB6eNkkHbzA" initializePartnerRole="no" myRole="Server_for_SoporteForThePortTypeProcess" bpdm:enableSharing="false" bpdm:providedService="this:WFmagic_p4e78KZNEeOEB6eNkkHbzAService" bpdm:providedPort="Server_for_SoporteForThePortTypeProcessPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Server/Soporte/WFmagic_p4e78KZNEeOEB6eNkkHbzA" bpdm:providedIsDefault="true" partnerRole="Soporte_for_ServerForXformPort" bpdm:invokedService="RecepcionaAtencion1:WorkflowSoapService" bpdm:invokedPort="xformPort" bpdm:invokedSOAPAddress="http://localhost:8080/fds/workflow/xform" bpdm:invokedIsDefault="true" bpdm:clientTasks="_U-eacKY9EeOEB6eNkkHbzA:_9H0MsKZPEeOEB6eNkkHbzA, _U-eacKY9EeOEB6eNkkHbzA:_8xnTMKZPEeOEB6eNkkHbzA" bpdm:isManaged="true" bpdm:otherPoolId="_pYMWUKYhEeOEB6eNkkHbzA"/>
+            <bpel:partnerLink name="serverAndBASEForRegistraTecnicoPortPlkVar" partnerLinkType="diag:ServerAndBASEForRegistraTecnicoPortPlk" initializePartnerRole="yes" partnerRole="BASE_for_Server" bpdm:invokedService="RegistraTecnico:RegistraTecnicoService" bpdm:invokedPort="RegistraTecnicoPort" bpdm:invokedSOAPAddress="http://localhost:8080/ode/processes/ProyectoSoporte/transacciones/RegistraTecnico" bpdm:invokedIsDefault="true" bpdm:clientTasks="_U-eacKY9EeOEB6eNkkHbzA:_9anM4KZPEeOEB6eNkkHbzA" bpdm:isManaged="true" bpdm:otherPoolId="_AKRywKY9EeOEB6eNkkHbzA"/>
+            <bpel:partnerLink name="wFmagic_rrktYKZREeOEB6eNkkHbzAPlkVar" partnerLinkType="diag:WFmagic_rrktYKZREeOEB6eNkkHbzA" initializePartnerRole="no" myRole="Server_for_SoporteForThePortTypeProcess" bpdm:enableSharing="false" bpdm:providedService="this:WFmagic_rrktYKZREeOEB6eNkkHbzAService" bpdm:providedPort="Server_for_SoporteForThePortTypeProcessPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Server/Soporte/WFmagic_rrktYKZREeOEB6eNkkHbzA" bpdm:providedIsDefault="true" partnerRole="Soporte_for_ServerForXformPort" bpdm:invokedService="Verificacion1:WorkflowSoapService" bpdm:invokedPort="xformPort" bpdm:invokedSOAPAddress="http://localhost:8080/fds/workflow/xform" bpdm:invokedIsDefault="true" bpdm:clientTasks="_U-eacKY9EeOEB6eNkkHbzA:_MDnBIKZREeOEB6eNkkHbzA, _U-eacKY9EeOEB6eNkkHbzA:_usPpEKZREeOEB6eNkkHbzA" bpdm:isManaged="true" bpdm:otherPoolId="_pYMWUKYhEeOEB6eNkkHbzA"/>
+            <bpel:partnerLink name="serverAndBASEForSolucionPortPlkVar" partnerLinkType="diag:ServerAndBASEForSolucionPortPlk" initializePartnerRole="yes" partnerRole="BASE_for_Server" bpdm:invokedService="Solucion:SolucionService" bpdm:invokedPort="SolucionPort" bpdm:invokedSOAPAddress="http://localhost:8080/ode/processes/ProyectoSoporte/transacciones/Solucion" bpdm:invokedIsDefault="true" bpdm:clientTasks="_U-eacKY9EeOEB6eNkkHbzA:_yQ8n0KayEeOjWt5atXfUXQ" bpdm:isManaged="true" bpdm:otherPoolId="_AKRywKY9EeOEB6eNkkHbzA"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="solicitud1InitProcessRequestMsg" messageType="solicitud1:initProcessRequest" bpdm:id="_gUFxYKZJEeOEB6eNkkHbzA" bpdm:messageIds="inc:_gTy2cKZJEeOEB6eNkkHbzA"/>
+            <bpel:variable name="solicitud1InitProcessResponseMsg" messageType="solicitud1:initProcessResponse" bpdm:id="_hVIXoKZJEeOEB6eNkkHbzA" bpdm:messageIds=" out:_hU348KZJEeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="root">
+                    <bpel:literal bpdm:linkedMessageType="solicitud1:initProcessResponse" bpdm:linkedPart="root"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="generaCodigoGeneraCodigoRequestMsg" messageType="GeneraCodigo:GeneraCodigoInput" binding="GeneraCodigo:GeneraCodigoPortSoapBinding" operation="GeneraCodigo" opMsgType="0" bpdm:id="_j3wFYKZJEeOEB6eNkkHbzA" bpdm:messageIds=" out:_j3dKcKZJEeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="parameters">
+                    <bpel:literal bpdm:linkedMessageType="GeneraCodigo:GeneraCodigoInput" bpdm:linkedPart="parameters" bpdm:binding="GeneraCodigo:GeneraCodigoPortSoapBinding" bpdm:opMsgType="0" bpdm:operation="GeneraCodigo"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="generaCodigoGeneraCodigoResponseMsg" messageType="GeneraCodigo:GeneraCodigoOutput" binding="GeneraCodigo:GeneraCodigoPortSoapBinding" operation="GeneraCodigo" opMsgType="1" bpdm:id="_lS9fIKZJEeOEB6eNkkHbzA" bpdm:messageIds="inc:_lSovAKZJEeOEB6eNkkHbzA"/>
+            <bpel:variable name="nsInsertarSolicitudRequestMsg" messageType="ns:InsertarSolicitudInput" binding="ns:InsertarSolicitudPortSoapBinding" operation="InsertarSolicitud" opMsgType="0" bpdm:id="_lw3jIKZJEeOEB6eNkkHbzA" bpdm:messageIds=" out:_lwnrgKZJEeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="parameters">
+                    <bpel:literal bpdm:linkedMessageType="ns:InsertarSolicitudInput" bpdm:linkedPart="parameters" bpdm:binding="ns:InsertarSolicitudPortSoapBinding" bpdm:opMsgType="0" bpdm:operation="InsertarSolicitud"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="nsInsertarSolicitudResponseMsg" messageType="ns:InsertarSolicitudOutput" binding="ns:InsertarSolicitudPortSoapBinding" operation="InsertarSolicitud" opMsgType="1" bpdm:id="_mDqjUKZJEeOEB6eNkkHbzA" bpdm:messageIds="inc:_mDTW8KZJEeOEB6eNkkHbzA"/>
+            <bpel:variable name="recepcionaAtencion1CreateTaskRequestMsg" messageType="RecepcionaAtencion1:createTaskRequest" binding="RecepcionaAtencion1:WorkflowSoapBinding" operation="createTask" opMsgType="0" bpdm:id="_-4YLYKZPEeOEB6eNkkHbzA" bpdm:messageIds=" out:_-4KI8KZPEeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="root">
+                    <bpel:literal bpdm:linkedMessageType="RecepcionaAtencion1:createTaskRequest" bpdm:linkedPart="root" bpdm:binding="RecepcionaAtencion1:WorkflowSoapBinding" bpdm:opMsgType="0" bpdm:operation="createTask"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="recepcionaAtencion1CreateTaskResponseMsg" messageType="RecepcionaAtencion1:createTaskResponse" binding="RecepcionaAtencion1:WorkflowSoapBinding" operation="createTask" opMsgType="1" bpdm:id="__H84daZPEeOEB6eNkkHbzA" bpdm:messageIds="inc:__HlsEKZPEeOEB6eNkkHbzA"/>
+            <bpel:variable name="recepcionaAtencion1NotifyTaskCompletionRequestMsg" messageType="RecepcionaAtencion1:notifyTaskCompletionRequest" bpdm:id="_CRdnEKZQEeOEB6eNkkHbzA" bpdm:messageIds="inc:_CRFMkKZQEeOEB6eNkkHbzA"/>
+            <bpel:variable name="recepcionaAtencion1NotifyTaskCompletionResponseMsg" messageType="RecepcionaAtencion1:notifyTaskCompletionResponse" bpdm:id="_C63wcKZQEeOEB6eNkkHbzA" bpdm:messageIds=" out:_C6f9AKZQEeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="root">
+                    <bpel:literal bpdm:linkedMessageType="RecepcionaAtencion1:notifyTaskCompletionResponse" bpdm:linkedPart="root"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="registraTecnicoRegistraTecnicoRequestMsg" messageType="RegistraTecnico:RegistraTecnicoInput" binding="RegistraTecnico:RegistraTecnicoPortSoapBinding" operation="RegistraTecnico" opMsgType="0" bpdm:id="_aBZnIKZQEeOEB6eNkkHbzA" bpdm:messageIds=" out:_aBJIcKZQEeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="parameters">
+                    <bpel:literal bpdm:linkedMessageType="RegistraTecnico:RegistraTecnicoInput" bpdm:linkedPart="parameters" bpdm:binding="RegistraTecnico:RegistraTecnicoPortSoapBinding" bpdm:opMsgType="0" bpdm:operation="RegistraTecnico"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="registraTecnicoRegistraTecnicoResponseMsg" messageType="RegistraTecnico:RegistraTecnicoOutput" binding="RegistraTecnico:RegistraTecnicoPortSoapBinding" operation="RegistraTecnico" opMsgType="1" bpdm:id="_abDdRaZQEeOEB6eNkkHbzA" bpdm:messageIds="inc:_aae1gKZQEeOEB6eNkkHbzA"/>
+            <bpel:variable name="verificacion1CreateTaskRequestMsg" messageType="Verificacion1:createTaskRequest" binding="Verificacion1:WorkflowSoapBinding" operation="createTask" opMsgType="0" bpdm:id="_uE-0wKZREeOEB6eNkkHbzA" bpdm:messageIds=" out:_uEtvAKZREeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="root">
+                    <bpel:literal bpdm:linkedMessageType="Verificacion1:createTaskRequest" bpdm:linkedPart="root" bpdm:binding="Verificacion1:WorkflowSoapBinding" bpdm:opMsgType="0" bpdm:operation="createTask"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="verificacion1CreateTaskResponseMsg" messageType="Verificacion1:createTaskResponse" binding="Verificacion1:WorkflowSoapBinding" operation="createTask" opMsgType="1" bpdm:id="_uYlGMKZREeOEB6eNkkHbzA" bpdm:messageIds="inc:_uYK2gKZREeOEB6eNkkHbzA"/>
+            <bpel:variable name="verificacion1NotifyTaskCompletionRequestMsg" messageType="Verificacion1:notifyTaskCompletionRequest" bpdm:id="_vVpydaZREeOEB6eNkkHbzA" bpdm:messageIds="inc:_vVNGgKZREeOEB6eNkkHbzA"/>
+            <bpel:variable name="verificacion1NotifyTaskCompletionResponseMsg" messageType="Verificacion1:notifyTaskCompletionResponse" bpdm:id="_vmm_kKZREeOEB6eNkkHbzA" bpdm:messageIds=" out:_vmSPcKZREeOEB6eNkkHbzA">
+                <bpel:from bpdm:toPart="root">
+                    <bpel:literal bpdm:linkedMessageType="Verificacion1:notifyTaskCompletionResponse" bpdm:linkedPart="root"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="solucionSolucionRequestMsg" messageType="Solucion:SolucionInput" binding="Solucion:SolucionPortSoapBinding" operation="Solucion" opMsgType="0" bpdm:id="_zxplkKayEeOjWt5atXfUXQ" bpdm:messageIds=" out:_zxP88KayEeOjWt5atXfUXQ">
+                <bpel:from bpdm:toPart="parameters">
+                    <bpel:literal bpdm:linkedMessageType="Solucion:SolucionInput" bpdm:linkedPart="parameters" bpdm:binding="Solucion:SolucionPortSoapBinding" bpdm:opMsgType="0" bpdm:operation="Solucion"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="solucionSolucionResponseMsg" messageType="Solucion:SolucionOutput" binding="Solucion:SolucionPortSoapBinding" operation="Solucion" opMsgType="1" bpdm:id="_0PNrUKayEeOjWt5atXfUXQ" bpdm:messageIds="inc:_0OEb0KayEeOjWt5atXfUXQ"/>
+            <bpel:variable name="notificacion1NotifyRequestMsg" messageType="notificacion1:notifyRequest" binding="notificacion1:WorkflowSoapBinding" operation="notify" opMsgType="0" bpdm:id="_vZzmIKazEeOjWt5atXfUXQ" bpdm:messageIds=" out:_vZgEIKazEeOjWt5atXfUXQ">
+                <bpel:from bpdm:toPart="root">
+                    <bpel:literal bpdm:linkedMessageType="notificacion1:notifyRequest" bpdm:linkedPart="root" bpdm:binding="notificacion1:WorkflowSoapBinding" bpdm:opMsgType="0" bpdm:operation="notify"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="notificacion1NotifyResponseMsg" messageType="notificacion1:notifyResponse" binding="notificacion1:WorkflowSoapBinding" operation="notify" opMsgType="1" bpdm:id="_vsht0KazEeOjWt5atXfUXQ" bpdm:messageIds="inc:_vsNkwKazEeOjWt5atXfUXQ"/>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask operation="initProcess" partnerLink="secretariaAndServerForPortTypeProcessPlkVar" portType="solicitud1:Process" isMyRole="true" enableSharing="false" bpdm:label="Task" bpdm:ID="_YEX0YKY9EeOEB6eNkkHbzA">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="solicitud1InitProcessRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="solicitud1:initProcessRequest" bpdm:ID="_gTy2cKZJEeOEB6eNkkHbzA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="solicitud1InitProcessResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="solicitud1:initProcessResponse" bpdm:ID="_hU348KZJEeOEB6eNkkHbzA"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="GeneraCodigo" partnerLink="serverAndBASEForGeneraCodigoPortPlkVar" portType="GeneraCodigo:GeneraCodigoPort" isMyRole="false" enableSharing="false" bpdm:label="Task" bpdm:ID="_T6mFIKZJEeOEB6eNkkHbzA">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="generaCodigoGeneraCodigoRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="GeneraCodigo:GeneraCodigoInput" bpdm:binding="GeneraCodigo:GeneraCodigoPortSoapBinding" bpdm:ID="_j3dKcKZJEeOEB6eNkkHbzA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="generaCodigoGeneraCodigoResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="GeneraCodigo:GeneraCodigoOutput" bpdm:binding="GeneraCodigo:GeneraCodigoPortSoapBinding" bpdm:ID="_lSovAKZJEeOEB6eNkkHbzA"></bpdm:linkset>
+                <bpdm:thrownFault msgFaultNcName="nsGeneraCodigoFault" msgFaultTypeQname="GeneraCodigo:GeneraCodigoFault"/>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="InsertarSolicitud" partnerLink="serverAndBASEForInsertarSolicitudPortPlkVar" portType="ns:InsertarSolicitudPort" isMyRole="false" enableSharing="false" bpdm:label="Task" bpdm:ID="_UiB4kKZJEeOEB6eNkkHbzA">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Fecha</bpel:from>
+                        <bpel:to>$nsInsertarSolicitudRequestMsg.parameters/ns:execute/ns:parameters/ns:Parameter2</bpel:to><mapper:mapperLink><mapper:vertice id="810299" targetPath="$nsInsertarSolicitudRequestMsg.parameters/ns:execute/ns:parameters/ns:Parameter2" targetedBy="31045470-arg0"></mapper:vertice><mapper:vertice id="31045470" sourcePath="$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Fecha"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Usuario_que_solicita</bpel:from>
+                        <bpel:to>$nsInsertarSolicitudRequestMsg.parameters/ns:execute/ns:parameters/ns:Parameter3</bpel:to><mapper:mapperLink><mapper:vertice id="1664010" targetPath="$nsInsertarSolicitudRequestMsg.parameters/ns:execute/ns:parameters/ns:Parameter3" targetedBy="15325898-arg0"></mapper:vertice><mapper:vertice id="15325898" sourcePath="$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Usuario_que_solicita"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Indicencia</bpel:from>
+                        <bpel:to>$nsInsertarSolicitudRequestMsg.parameters/ns:execute/ns:parameters/ns:Parameter4</bpel:to><mapper:mapperLink><mapper:vertice id="17988884" targetPath="$nsInsertarSolicitudRequestMsg.parameters/ns:execute/ns:parameters/ns:Parameter4" targetedBy="8167715-arg0"></mapper:vertice><mapper:vertice id="8167715" sourcePath="$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Indicencia"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$generaCodigoGeneraCodigoResponseMsg.parameters/GeneraCodigo:rows/GeneraCodigo:row/GeneraCodigo:codigo</bpel:from>
+                        <bpel:to>$nsInsertarSolicitudRequestMsg.parameters/ns:execute/ns:parameters/ns:Parameter0</bpel:to><mapper:mapperLink><mapper:vertice id="27610396" targetPath="$nsInsertarSolicitudRequestMsg.parameters/ns:execute/ns:parameters/ns:Parameter0" targetedBy="13635582-arg0"></mapper:vertice><mapper:vertice id="13635582" sourcePath="$generaCodigoGeneraCodigoResponseMsg.parameters/GeneraCodigo:rows/GeneraCodigo:row/GeneraCodigo:codigo"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Oficina</bpel:from>
+                        <bpel:to>$nsInsertarSolicitudRequestMsg.parameters/ns:execute/ns:parameters/ns:Parameter1</bpel:to><mapper:mapperLink><mapper:vertice id="30639433" targetPath="$nsInsertarSolicitudRequestMsg.parameters/ns:execute/ns:parameters/ns:Parameter1" targetedBy="14893748-arg0"></mapper:vertice><mapper:vertice id="14893748" sourcePath="$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Oficina"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="nsInsertarSolicitudRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="ns:InsertarSolicitudInput" bpdm:binding="ns:InsertarSolicitudPortSoapBinding" bpdm:ID="_lwnrgKZJEeOEB6eNkkHbzA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="nsInsertarSolicitudResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="ns:InsertarSolicitudOutput" bpdm:binding="ns:InsertarSolicitudPortSoapBinding" bpdm:ID="_mDTW8KZJEeOEB6eNkkHbzA"></bpdm:linkset>
+                <bpdm:thrownFault msgFaultNcName="nsInsertarSolicitudFault" msgFaultTypeQname="ns:InsertarSolicitudFault"/>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="createTask" partnerLink="wFmagic_p4e78KZNEeOEB6eNkkHbzAPlkVar" portType="RecepcionaAtencion1:Workflow" isMyRole="false" enableSharing="false" bpdm:label="Task" bpdm:ID="_8xnTMKZPEeOEB6eNkkHbzA">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Oficina</bpel:from>
+                        <bpel:to>$recepcionaAtencion1CreateTaskRequestMsg.root/RecepcionaAtencion1:taskInput/RecepcionaAtencion1:input/RecepcionaAtencion1:group49/RecepcionaAtencion1:Oficina</bpel:to><mapper:mapperLink><mapper:vertice id="24804796" targetPath="$recepcionaAtencion1CreateTaskRequestMsg.root/RecepcionaAtencion1:taskInput/RecepcionaAtencion1:input/RecepcionaAtencion1:group49/RecepcionaAtencion1:Oficina" targetedBy="17136628-arg0"></mapper:vertice><mapper:vertice id="17136628" sourcePath="$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Oficina"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Indicencia</bpel:from>
+                        <bpel:to>$recepcionaAtencion1CreateTaskRequestMsg.root/RecepcionaAtencion1:taskInput/RecepcionaAtencion1:input/RecepcionaAtencion1:group49/RecepcionaAtencion1:Indicencia</bpel:to><mapper:mapperLink><mapper:vertice id="21110115" targetPath="$recepcionaAtencion1CreateTaskRequestMsg.root/RecepcionaAtencion1:taskInput/RecepcionaAtencion1:input/RecepcionaAtencion1:group49/RecepcionaAtencion1:Indicencia" targetedBy="18171554-arg0"></mapper:vertice><mapper:vertice id="18171554" sourcePath="$solicitud1InitProcessRequestMsg.root/solicitud1:taskOutput/solicitud1:output/solicitud1:group37/solicitud1:Indicencia"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$generaCodigoGeneraCodigoResponseMsg.parameters/GeneraCodigo:rows/GeneraCodigo:row/GeneraCodigo:codigo</bpel:from>
+                        <bpel:to>$recepcionaAtencion1CreateTaskRequestMsg.root/RecepcionaAtencion1:taskInput/RecepcionaAtencion1:input/RecepcionaAtencion1:group49/RecepcionaAtencion1:Codigo_Indicencia</bpel:to><mapper:mapperLink><mapper:vertice id="25695749" targetPath="$recepcionaAtencion1CreateTaskRequestMsg.root/RecepcionaAtencion1:taskInput/RecepcionaAtencion1:input/RecepcionaAtencion1:group49/RecepcionaAtencion1:Codigo_Indicencia" targetedBy="7772243-arg0"></mapper:vertice><mapper:vertice id="7772243" sourcePath="$generaCodigoGeneraCodigoResponseMsg.parameters/GeneraCodigo:rows/GeneraCodigo:row/GeneraCodigo:codigo"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="recepcionaAtencion1CreateTaskRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="RecepcionaAtencion1:createTaskRequest" bpdm:binding="RecepcionaAtencion1:WorkflowSoapBinding" bpdm:ID="_-4KI8KZPEeOEB6eNkkHbzA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="recepcionaAtencion1CreateTaskResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="RecepcionaAtencion1:createTaskResponse" bpdm:binding="RecepcionaAtencion1:WorkflowSoapBinding" bpdm:ID="__HlsEKZPEeOEB6eNkkHbzA"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="notifyTaskCompletion" partnerLink="wFmagic_p4e78KZNEeOEB6eNkkHbzAPlkVar" portType="RecepcionaAtencion1:Process" isMyRole="true" enableSharing="false" bpdm:label="Task" bpdm:ID="_9H0MsKZPEeOEB6eNkkHbzA">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="recepcionaAtencion1NotifyTaskCompletionRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="RecepcionaAtencion1:notifyTaskCompletionRequest" bpdm:ID="_CRFMkKZQEeOEB6eNkkHbzA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="recepcionaAtencion1NotifyTaskCompletionResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="RecepcionaAtencion1:notifyTaskCompletionResponse" bpdm:ID="_C6f9AKZQEeOEB6eNkkHbzA"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="RegistraTecnico" partnerLink="serverAndBASEForRegistraTecnicoPortPlkVar" portType="RegistraTecnico:RegistraTecnicoPort" isMyRole="false" enableSharing="false" bpdm:label="Task" bpdm:ID="_9anM4KZPEeOEB6eNkkHbzA">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:TecResponsable</bpel:from>
+                        <bpel:to>$registraTecnicoRegistraTecnicoRequestMsg.parameters/RegistraTecnico:execute/RegistraTecnico:parameters/RegistraTecnico:TecResponsable</bpel:to><mapper:mapperLink><mapper:vertice id="18124248" targetPath="$registraTecnicoRegistraTecnicoRequestMsg.parameters/RegistraTecnico:execute/RegistraTecnico:parameters/RegistraTecnico:TecResponsable" targetedBy="4243103-arg0"></mapper:vertice><mapper:vertice id="4243103" sourcePath="$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:TecResponsable"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:Codigo_Indicencia</bpel:from>
+                        <bpel:to>$registraTecnicoRegistraTecnicoRequestMsg.parameters/RegistraTecnico:execute/RegistraTecnico:parameters/RegistraTecnico:id</bpel:to><mapper:mapperLink><mapper:vertice id="24676521" targetPath="$registraTecnicoRegistraTecnicoRequestMsg.parameters/RegistraTecnico:execute/RegistraTecnico:parameters/RegistraTecnico:id" targetedBy="24313618-arg0"></mapper:vertice><mapper:vertice id="24313618" sourcePath="$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:Codigo_Indicencia"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="registraTecnicoRegistraTecnicoRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="RegistraTecnico:RegistraTecnicoInput" bpdm:binding="RegistraTecnico:RegistraTecnicoPortSoapBinding" bpdm:ID="_aBJIcKZQEeOEB6eNkkHbzA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="registraTecnicoRegistraTecnicoResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="RegistraTecnico:RegistraTecnicoOutput" bpdm:binding="RegistraTecnico:RegistraTecnicoPortSoapBinding" bpdm:ID="_aae1gKZQEeOEB6eNkkHbzA"></bpdm:linkset>
+                <bpdm:thrownFault msgFaultNcName="nsRegistraTecnicoFault" msgFaultTypeQname="RegistraTecnico:RegistraTecnicoFault"/>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="createTask" partnerLink="wFmagic_rrktYKZREeOEB6eNkkHbzAPlkVar" portType="Verificacion1:Workflow" isMyRole="false" enableSharing="false" bpdm:label="Task" bpdm:ID="_MDnBIKZREeOEB6eNkkHbzA">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:TecResponsable</bpel:from>
+                        <bpel:to>$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskInput/Verificacion1:input/Verificacion1:Tec_Responsable</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="15846907" targetPath="$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskInput/Verificacion1:input/Verificacion1:Tec_Responsable" targetedBy="16447446-arg0"></mapper:vertice>
+  <mapper:vertice id="16447446" sourcePath="$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:TecResponsable"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:Codigo_Indicencia</bpel:from>
+                        <bpel:to>$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskInput/Verificacion1:input/Verificacion1:Codigo_Insidencia_</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="7547796" targetPath="$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskInput/Verificacion1:input/Verificacion1:Codigo_Insidencia_" targetedBy="27090164-arg0"></mapper:vertice>
+  <mapper:vertice id="27090164" sourcePath="$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:Codigo_Indicencia"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:Oficina</bpel:from>
+                        <bpel:to>$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskInput/Verificacion1:input/Verificacion1:Oficina</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="29458425" targetPath="$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskInput/Verificacion1:input/Verificacion1:Oficina" targetedBy="31799126-arg0"></mapper:vertice>
+  <mapper:vertice id="31799126" sourcePath="$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:Oficina"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:Indicencia</bpel:from>
+                        <bpel:to>$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskInput/Verificacion1:input/Verificacion1:Insidencia_</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="5979008" targetPath="$verificacion1CreateTaskRequestMsg.root/Verificacion1:taskInput/Verificacion1:input/Verificacion1:Insidencia_" targetedBy="26710371-arg0"></mapper:vertice>
+  <mapper:vertice id="26710371" sourcePath="$recepcionaAtencion1NotifyTaskCompletionRequestMsg.root/RecepcionaAtencion1:taskOutput/RecepcionaAtencion1:output/RecepcionaAtencion1:group49/RecepcionaAtencion1:Indicencia"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="verificacion1CreateTaskRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="Verificacion1:createTaskRequest" bpdm:binding="Verificacion1:WorkflowSoapBinding" bpdm:ID="_uEtvAKZREeOEB6eNkkHbzA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="verificacion1CreateTaskResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="Verificacion1:createTaskResponse" bpdm:binding="Verificacion1:WorkflowSoapBinding" bpdm:ID="_uYK2gKZREeOEB6eNkkHbzA"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="notifyTaskCompletion" partnerLink="wFmagic_rrktYKZREeOEB6eNkkHbzAPlkVar" portType="Verificacion1:Process" isMyRole="true" enableSharing="false" bpdm:label="Task" bpdm:ID="_usPpEKZREeOEB6eNkkHbzA">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="verificacion1NotifyTaskCompletionRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="Verificacion1:notifyTaskCompletionRequest" bpdm:ID="_vVNGgKZREeOEB6eNkkHbzA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="verificacion1NotifyTaskCompletionResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="Verificacion1:notifyTaskCompletionResponse" bpdm:ID="_vmSPcKZREeOEB6eNkkHbzA"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="Solucion" partnerLink="serverAndBASEForSolucionPortPlkVar" portType="Solucion:SolucionPort" isMyRole="false" enableSharing="false" bpdm:label="Task" bpdm:ID="_yQ8n0KayEeOjWt5atXfUXQ">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:solucion</bpel:from>
+                        <bpel:to>$solucionSolucionRequestMsg.parameters/Solucion:execute/Solucion:parameters/Solucion:solucion</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="29536604" targetPath="$solucionSolucionRequestMsg.parameters/Solucion:execute/Solucion:parameters/Solucion:solucion" targetedBy="9441338-arg0"></mapper:vertice>
+  <mapper:vertice id="9441338" sourcePath="$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:solucion"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:Codigo_Insidencia_</bpel:from>
+                        <bpel:to>$solucionSolucionRequestMsg.parameters/Solucion:execute/Solucion:parameters/Solucion:id</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="7246374" targetPath="$solucionSolucionRequestMsg.parameters/Solucion:execute/Solucion:parameters/Solucion:id" targetedBy="20139391-arg0"></mapper:vertice>
+  <mapper:vertice id="20139391" sourcePath="$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:Codigo_Insidencia_"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="solucionSolucionRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="Solucion:SolucionInput" bpdm:binding="Solucion:SolucionPortSoapBinding" bpdm:ID="_zxP88KayEeOjWt5atXfUXQ"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="solucionSolucionResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="Solucion:SolucionOutput" bpdm:binding="Solucion:SolucionPortSoapBinding" bpdm:ID="_0OEb0KayEeOjWt5atXfUXQ"></bpdm:linkset>
+                <bpdm:thrownFault msgFaultNcName="nsSolucionFault" msgFaultTypeQname="Solucion:SolucionFault"/>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="notify" partnerLink="secretariaAndServerForPortTypeProcessPlkVar" portType="notificacion1:Workflow" isMyRole="false" enableSharing="false" bpdm:label="Task" bpdm:ID="_vGeacKazEeOjWt5atXfUXQ">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:Codigo_Insidencia_</bpel:from>
+                        <bpel:to>$notificacion1NotifyRequestMsg.root/notificacion1:input/notificacion1:input/notificacion1:group20/notificacion1:Codigo_Insidencia</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="19718032" targetPath="$notificacion1NotifyRequestMsg.root/notificacion1:input/notificacion1:input/notificacion1:group20/notificacion1:Codigo_Insidencia" targetedBy="27860312-arg0"></mapper:vertice>
+  <mapper:vertice id="27860312" sourcePath="$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:Codigo_Insidencia_"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:Oficina</bpel:from>
+                        <bpel:to>$notificacion1NotifyRequestMsg.root/notificacion1:input/notificacion1:input/notificacion1:group20/notificacion1:Oficina</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="19803280" targetPath="$notificacion1NotifyRequestMsg.root/notificacion1:input/notificacion1:input/notificacion1:group20/notificacion1:Oficina" targetedBy="18196502-arg0"></mapper:vertice>
+  <mapper:vertice id="18196502" sourcePath="$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:Oficina"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:Insidencia_</bpel:from>
+                        <bpel:to>$notificacion1NotifyRequestMsg.root/notificacion1:input/notificacion1:input/notificacion1:group20/notificacion1:Insidencia</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="710222" targetPath="$notificacion1NotifyRequestMsg.root/notificacion1:input/notificacion1:input/notificacion1:group20/notificacion1:Insidencia" targetedBy="17620318-arg0"></mapper:vertice>
+  <mapper:vertice id="17620318" sourcePath="$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:Insidencia_"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:Tec_Responsable</bpel:from>
+                        <bpel:to>$notificacion1NotifyRequestMsg.root/notificacion1:input/notificacion1:input/notificacion1:group20/notificacion1:Tec_Responsable</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="29245783" targetPath="$notificacion1NotifyRequestMsg.root/notificacion1:input/notificacion1:input/notificacion1:group20/notificacion1:Tec_Responsable" targetedBy="32485320-arg0"></mapper:vertice>
+  <mapper:vertice id="32485320" sourcePath="$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:Tec_Responsable"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:solucion</bpel:from>
+                        <bpel:to>$notificacion1NotifyRequestMsg.root/notificacion1:input/notificacion1:input/notificacion1:group20/notificacion1:solucion</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="27601962" targetPath="$notificacion1NotifyRequestMsg.root/notificacion1:input/notificacion1:input/notificacion1:group20/notificacion1:solucion" targetedBy="8193551-arg0"></mapper:vertice>
+  <mapper:vertice id="8193551" sourcePath="$verificacion1NotifyTaskCompletionRequestMsg.root/Verificacion1:taskOutput/Verificacion1:output/Verificacion1:solucion"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="notificacion1NotifyRequestMsg" bpdm:variableIsManaged="true" bpdm:messageType="notificacion1:notifyRequest" bpdm:binding="notificacion1:WorkflowSoapBinding" bpdm:ID="_vZgEIKazEeOjWt5atXfUXQ"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="notificacion1NotifyResponseMsg" bpdm:variableIsManaged="true" bpdm:messageType="notificacion1:notifyResponse" bpdm:binding="notificacion1:WorkflowSoapBinding" bpdm:ID="_vsNkwKazEeOjWt5atXfUXQ"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>

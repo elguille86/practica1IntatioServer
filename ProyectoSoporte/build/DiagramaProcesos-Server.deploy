@@ -1,0 +1,35 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<dd:process xmlns:ns="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice" xmlns:RegistraTecnico="urn:intalio.com:connectors:database:proyectosoporte:registratecnicoservice" xmlns:Soporte="http://example.com/DiagramaProcesos/Soporte" xmlns:Verificacion="http://example.com/formulario/Verificacion/xform/attachments" xmlns:notificacion1="http://example.com/formulario/notificacion/xform" xmlns:notificacion="http://example.com/formulario/notificacion/xform/attachments" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:solicitud="http://example.com/formulario/solicitud/xform/attachments" xmlns:dd="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:BASE="http://example.com/DiagramaProcesos/BASE" xmlns:diag="http://example.com/DiagramaProcesos" xmlns:RecepcionaAtencion="http://example.com/formulario/RecepcionaAtencion/xform/attachments" xmlns:Verificacion1="http://example.com/formulario/Verificacion/xform" xmlns:GeneraCodigo="urn:intalio.com:connectors:database:proyectosoporte:generacodigoservice" xmlns:RecepcionaAtencion1="http://example.com/formulario/RecepcionaAtencion/xform" xmlns:solicitud1="http://example.com/formulario/solicitud/xform" xmlns:Solucion="urn:intalio.com:connectors:database:proyectosoporte:solucionservice" xmlns:this="http://example.com/DiagramaProcesos/Server" xmlns:Secretaria="http://example.com/DiagramaProcesos/Secretaria" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="this:Server" fileName="DiagramaProcesos-Server.bpel">
+  <dd:property name="PATH">DiagramaProcesos</dd:property>
+  <dd:property name="SVG">DiagramaProcesos.svg</dd:property>
+  <dd:provide partnerLink="secretariaAndServerForPortTypeProcessPlkVar">
+    <dd:service name="this:SecretariaAndServerForPortTypeProcessPlkService" port="Server_for_SecretariaPort"></dd:service>
+  </dd:provide>
+  <dd:invoke partnerLink="secretariaAndServerForPortTypeProcessPlkVar">
+    <dd:service name="notificacion1:WorkflowSoapService" port="xformPort"/>
+  </dd:invoke>
+  <dd:invoke partnerLink="serverAndBASEForGeneraCodigoPortPlkVar">
+    <dd:service name="GeneraCodigo:GeneraCodigoService" port="GeneraCodigoPort"/>
+  </dd:invoke>
+  <dd:invoke partnerLink="serverAndBASEForInsertarSolicitudPortPlkVar">
+    <dd:service name="ns:InsertarSolicitudService" port="InsertarSolicitudPort"/>
+  </dd:invoke>
+  <dd:provide partnerLink="wFmagic_p4e78KZNEeOEB6eNkkHbzAPlkVar">
+    <dd:service name="this:WFmagic_p4e78KZNEeOEB6eNkkHbzAService" port="Server_for_SoporteForThePortTypeProcessPort"></dd:service>
+  </dd:provide>
+  <dd:invoke partnerLink="wFmagic_p4e78KZNEeOEB6eNkkHbzAPlkVar">
+    <dd:service name="RecepcionaAtencion1:WorkflowSoapService" port="xformPort"/>
+  </dd:invoke>
+  <dd:invoke partnerLink="serverAndBASEForRegistraTecnicoPortPlkVar">
+    <dd:service name="RegistraTecnico:RegistraTecnicoService" port="RegistraTecnicoPort"/>
+  </dd:invoke>
+  <dd:provide partnerLink="wFmagic_rrktYKZREeOEB6eNkkHbzAPlkVar">
+    <dd:service name="this:WFmagic_rrktYKZREeOEB6eNkkHbzAService" port="Server_for_SoporteForThePortTypeProcessPort"></dd:service>
+  </dd:provide>
+  <dd:invoke partnerLink="wFmagic_rrktYKZREeOEB6eNkkHbzAPlkVar">
+    <dd:service name="Verificacion1:WorkflowSoapService" port="xformPort"/>
+  </dd:invoke>
+  <dd:invoke partnerLink="serverAndBASEForSolucionPortPlkVar">
+    <dd:service name="Solucion:SolucionService" port="SolucionPort"/>
+  </dd:invoke>
+</dd:process>

@@ -1,0 +1,43 @@
+﻿<wsdl:definitions targetNamespace="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice" xmlns:tns="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice">
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="InsertarSolicitud.xsd" namespace="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="InsertarSolicitudInput">
+        <wsdl:part name="parameters" element="ns:InsertarSolicitudParameterSet"/>
+    </wsdl:message>
+    <wsdl:message name="InsertarSolicitudOutput">
+        <wsdl:part name="parameters" element="ns:InsertarSolicitudResultSet"/>
+    </wsdl:message>
+    <wsdl:message name="InsertarSolicitudFault">
+        <wsdl:part name="fault" element="ns:InsertarSolicitudFault"/>
+    </wsdl:message>
+    <wsdl:portType name="InsertarSolicitudPort">
+        <wsdl:operation name="InsertarSolicitud">
+            <wsdl:input message="tns:InsertarSolicitudInput"/>
+            <wsdl:output message="tns:InsertarSolicitudOutput"/>
+            <wsdl:fault message="tns:InsertarSolicitudFault" name="nsInsertarSolicitudFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="InsertarSolicitudPortSoapBinding" type="tns:InsertarSolicitudPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="InsertarSolicitud">
+            <soap:operation style="document" soapAction="urn:intalio:connector:jdbc:query:InsertarSolicitud"/>
+            <wsdl:input>
+                <soap:body namespace="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body namespace="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="nsInsertarSolicitudFault">
+                <soap:body namespace="urn:intalio.com:connectors:database:proyectosoporte:insertarsolicitudservice" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="InsertarSolicitudService">
+        <wsdl:port binding="tns:InsertarSolicitudPortSoapBinding" name="InsertarSolicitudPort">
+            <soap:address location="http://localhost:8080/ode/processes/ProyectoSoporte/transacciones/InsertarSolicitud"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
